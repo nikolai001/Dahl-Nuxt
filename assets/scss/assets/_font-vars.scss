@@ -1,0 +1,45 @@
+$headline:6.65vw;
+
+$paragraph:4.27vw;
+
+$menu:5vw;
+
+$contact:3.7vw;
+
+$input:4vw;
+
+$big-text:6.5vw;
+
+$submit:18px;
+
+@media (min-width: 600px) {
+    $headline:25px;
+
+    $paragraph:14px;
+    
+    $menu:20px;
+    
+    $contact:14px;
+    
+    $input:14px; 
+
+    $big-text:25px;
+
+    $submit:18px;
+}
+
+@media (min-width: 1000px) {
+    $headline:25px;
+
+    $paragraph:14px;
+    
+    $menu:14px;
+    
+    $contact:14px;
+    
+    $input:14px; 
+
+    $submit:18px;
+    
+    $big-text:25px;
+}
