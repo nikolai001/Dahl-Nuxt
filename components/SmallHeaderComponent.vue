@@ -113,6 +113,7 @@ export default {
   width: 100%;
   z-index: 3;
   padding: 25% 0;
+  margin: 0;
 }
 
 .displayMenu{
@@ -140,6 +141,7 @@ export default {
   flex-wrap: nowrap;
   list-style-type: none;
   padding: 24px 5%;
+  margin: 0;
 }
 
 .list__company {

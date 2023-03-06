@@ -192,6 +192,7 @@ export default {
   flex-wrap: nowrap;
   list-style-type: none;
   padding: 24px 5%;
+  margin: 0;
 }
 
 .content {
