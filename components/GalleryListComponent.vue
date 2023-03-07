@@ -79,6 +79,7 @@ export default {
 		cursor: pointer;
 		box-shadow: $el-1;
 		transition: $transition;
+		text-decoration: none;
 		&:hover {
 			box-shadow: $el-2;
 			transform: $scale-el-2;
