@@ -1,15 +1,15 @@
 <template>
   <main>
     <small-header-component></small-header-component>
-    <p>This is project {{this.$route.params.id}}</p>
+    <p>This is project {{this.$route.params.index}}</p>
     <footer-component></footer-component>
   </main>
 </template>
 
 <script>
 
-import SmallHeaderComponent from '../components/SmallHeaderComponent.vue'
-import FooterComponent from '../components/FooterComponent.vue'
+import SmallHeaderComponent from '@/components/SmallHeaderComponent.vue'
+import FooterComponent from '@/components/FooterComponent.vue'
 // @ is an alias to /src
 
 export default {

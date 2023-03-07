@@ -5,7 +5,7 @@
 		</div>
 		<p class="project__title">{{project.name}}</p>
 		<p class="project__description">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores</p>
-		<router-link class="project__cta" :to="'project/'+project.id">Se billeder</router-link>
+		<nuxt-link class="project__cta" :to="'projects/'+project.id">Se billeder</nuxt-link>
 	</div>
 </template>
 
