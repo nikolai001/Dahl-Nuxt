@@ -1,6 +1,7 @@
 <template>
   <article>
     <employee-card-component v-for="employee in employees" :key="employee.id" :worker="employee"/>
+    <contact-map-component />
   </article>
 </template>
 
