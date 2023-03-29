@@ -64,4 +64,50 @@ export default {
             }
         }
     }
+
+    @media(min-width: 600px) {
+        .card {
+            width: 90%;
+            margin: 25px auto;
+            padding: 10px 5px;
+            max-width: 250px;
+            &__field {
+                margin: 0 0 0 20px;
+                font-size: 14px;
+                &:nth-child(3) {
+                    margin: 10px 0 10px 20px;
+                }
+                .field__icon {
+                    margin: 0;
+                    padding: 0;
+                    font-size: 20px;
+                    height: fit-content;
+                    margin-right: 5%;
+                }
+            }
+        }
+    }
+
+    @media(min-width: 1000px) {
+        .card {
+            width: 90%;
+            margin: 25px auto;
+            padding: 20px 10px;
+            max-width: 350px;
+            &__field {
+                margin: 0 0 0 20px;
+                font-size: 14px;
+                &:nth-child(3) {
+                    margin: 10px 0 10px 20px;
+                }
+                .field__icon {
+                    margin: 0;
+                    padding: 0;
+                    font-size: 20px;
+                    height: fit-content;
+                    margin-right: 5%;
+                }
+            }
+        }
+    }
 </style>

@@ -1,6 +1,8 @@
 <template>
-  <article>
-    <employee-card-component v-for="employee in employees" :key="employee.id" :worker="employee"/>
+  <article class="contact-page">
+    <div class="contact-page__employees">
+      <employee-card-component v-for="employee in employees" :key="employee.id" :worker="employee"/>
+    </div>
     <contact-map-component />
   </article>
 </template>
@@ -32,6 +34,17 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+  .contact-page {
+    display: flex;
+    flex-direction: column;
+    &__employees {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      max-width: 1000px;
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
 </style>
