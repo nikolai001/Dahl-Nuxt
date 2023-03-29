@@ -95,7 +95,10 @@ export default {
 		border: none;
 	}
 	&__headline {
-		text-align: center;
+    width: 90%;
+    margin: 10px auto;
+		text-align: left;
+    color: $border;
 	}
 	&__form {
 		display: flex;
@@ -141,6 +144,12 @@ export default {
 			margin: 10px auto;
 			overflow: hidden;
 			background-color: $background-white;
+
+      &::placeholder {
+        color: $border;
+        opacity: 1;
+      }
+
 			&:focus {
 				border: solid 1px $blue;
 				color: $blue;
@@ -176,6 +185,7 @@ export default {
 				display: flex;
 				flex-direction: row;
 				justify-content: space-evenly;
+        margin: 12px 0 0 0;
 				.button-holder__button {
 					margin: 0;
 					&--submit {
@@ -189,4 +199,38 @@ export default {
 		}
 	}
 }
+
+@media (min-width: 1000px) {
+	.contact-map {
+		width: 90%;
+		margin: 0 auto 30px auto;
+    max-width: 1000px;
+    grid-template-columns: 5fr 2fr;
+		&__form {
+      margin-bottom: 115px;
+			.form__field {
+				padding: 8px 8px;
+				min-height: unset;
+				width: 90%;
+				margin: 12px auto;
+			}
+
+			.form__button-holder {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-evenly;
+				.button-holder__button {
+					margin: 0;
+					&--submit {
+						max-width: 100px;
+					}
+					&--cancel {
+						width: fit-content;
+					}
+				}
+			}
+		}
+	}
+}
+
 </style>
