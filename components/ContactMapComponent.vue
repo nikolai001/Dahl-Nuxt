@@ -28,6 +28,8 @@
 				v-model="request.message"
         @input="resize($event)"
 			/>
+			<label for="terms" class="form__terms"><input name="terms" id="terms" type="checkbox" v-model="request.terms"/>Jeg acceptere hermed at Dahl opbevarer mine data gennem tredjeparts servere med formålet at tilsende 
+			tilbud til den givne e-mail eller mobil nummer samt generel kontakt mellem kunde og virksomhed.</label>
 			<div class="form__button-holder">
 				<button
 					type="button"
@@ -39,6 +41,7 @@
 				<button
 					type="button"
 					class="button-holder__button button-holder__button--submit"
+					@click="submit()"
 				>
 					Send
 				</button>
@@ -60,19 +63,26 @@ export default {
 				mail: "",
 				phone: "",
 				message: "",
+				terms: false
 			},
 		};
 	},
 	methods: {
 		clear() {
-			this.request = { name: "", mail: "", phone: "", message: "" };
+			this.request = { name: "", mail: "", phone: "", message: "", terms: false };
 		},
     resize(e) {
       if (e.target.value.length > 0) {
         e.target.style.height = 'auto'
         e.target.style.height = `${e.target.scrollHeight}px`
       }
-    }
+    },
+	submit() {
+		if (this.request.name.length > 1 && this.request.mail.length > 1 && this.request.phone.length > 1 && this.request.message.length > 1 && !this.request.terms) {
+			this.clear()
+			alert('Went through')
+		}
+	}
 	},
 };
 </script>
@@ -104,6 +114,13 @@ export default {
 		display: flex;
 		flex-direction: column;
 		margin-bottom: 20px;
+
+		.form__terms {
+			width: 90%;
+			margin: 0 auto;
+			font-size: 2.5vw;
+			padding: 1% 1%;
+		}
 
 		.form__button-holder {
 			display: flex;
@@ -174,6 +191,14 @@ export default {
 		}
 
 		&__form {
+
+			.form__terms {
+				width: 90%;
+				margin: 0 auto;
+				font-size: 12px;
+				padding: 1% 1%;
+			}
+
 			.form__field {
 				padding: 8px 8px;
 				min-height: unset;
