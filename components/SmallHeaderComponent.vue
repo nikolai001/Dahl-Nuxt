@@ -39,7 +39,7 @@
           <router-link to="Galleries" class="item__link">GALLERI</router-link>
         </li>
         <li class="menu__item">
-          <router-link to="#" class="item__link">KONTAKT</router-link>
+          <router-link to="Contact" class="item__link">KONTAKT</router-link>
         </li>
       </menu>
     </nav>
