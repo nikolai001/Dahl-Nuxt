@@ -1,8 +1,7 @@
 <template>
   <main>
     <small-header-component></small-header-component>
-    <!-- <p>This is project {{this.$route.params.index}}</p> -->
-    <SliderComponent />
+    <ProjectComponent />
     <footer-component></footer-component>
   </main>
 </template>
@@ -11,14 +10,14 @@
 
 import SmallHeaderComponent from '@/components/SmallHeaderComponent.vue'
 import FooterComponent from '@/components/FooterComponent.vue'
-import SliderComponent from '@/components/SliderComponent.vue'
+import ProjectComponent from '@/components/ProjectComponent.vue'
 // @ is an alias to /src
 
 export default {
   name: 'Project',
   components: {
     SmallHeaderComponent,
-    SliderComponent,
+    ProjectComponent,
     FooterComponent
   }
 }

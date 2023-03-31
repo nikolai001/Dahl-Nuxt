@@ -1,5 +1,5 @@
 <template>
-  <main class="about">
+  <article class="about">
       <h2 class="about__headline">Om Dahl Lolland</h2>
       <p class="about__paragraph">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
@@ -21,7 +21,7 @@
         <img src="../assets/DahlCar.png" class="image-container__image" />
       </div>
 
-  </main>
+  </article>
 </template>
 
 <script>
@@ -42,21 +42,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./assets/scss/assets/_colours";
-
+@import "./assets/scss/assets/_collections";
 .about {
   overflow-x: hidden;
   display: grid;
   &__headline {
-    color: $border-blue;
-    font-size: 6.65vw;
+    @include headline($blue,$headline);
     text-align: left;
     padding: 0 5%;
     margin: 77px 0 32px 0;
   }
   &__paragraph {
-    color: $dark-grey;
-    font-size: 4.27vw;
+    @include paragraph(null, $paragraph);
     text-align: left;
     padding: 0 5%;
     margin-bottom: 32px;
@@ -81,14 +78,12 @@ export default {
     display:grid;
 
     &__headline {
-      color: $border-blue;
-      font-size: 25px;
+      @include headline(null, $headline--desktop);
       grid-column: 1/2;
       padding: 0 10%;
     }
     &__paragraph {
-      color: $dark-grey;
-      font-size: 14px;
+      @include paragraph(null, $paragraph--desktop);
       padding: 0 10%;
       grid-column: 1/2;
       width:100%;
@@ -117,13 +112,7 @@ export default {
     display:grid;
     grid-template-columns: 1fr 0.6fr;
 
-    &__headline {
-      color: $border-blue;
-      font-size: 25px;
-    }
     &__paragraph {
-      color: $dark-grey;
-      font-size: 14px;
       padding: 0 10%;
       width:80%;
     }

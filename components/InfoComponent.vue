@@ -47,20 +47,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./assets/scss/assets/_colours";
+@import "./assets/scss/assets/_collections";
 
 .info {
   display: grid;
   &__headline {
-    color: $border-blue;
-    font-size: 6.65vw;
+    @include headline;
     text-align: left;
     padding: 0 5%;
     margin: 77px 0 32px 0;
   }
   &__paragraph {
-    color: $dark-grey;
-    font-size: 4.27vw;
+    @include paragraph;
     text-align: justify;
     padding: 0 5%;
     margin-bottom: 32px;
@@ -107,20 +105,17 @@ export default {
     background-image: url("../assets/Lolland-Falster.svg");
     background-repeat: no-repeat;
     background-size: cover;
-    //grid-template-columns: 1fr 1fr;
     display:flex;
     &__about{
       width:60%;
     }
     &__headline {
-      color: $border-blue;
-      font-size: 25px;
+      @include headline(null, $headline--desktop);
       grid-column: 1/2;
       padding: 0 10%;
     }
     &__paragraph {
-      color: $dark-grey;
-      font-size: 14px;
+      @include paragraph(null,$paragraph--desktop);
       padding: 0 10%;
       grid-column: 1/2;
     }
@@ -171,13 +166,7 @@ export default {
       width:100%;
     }
 
-    &__headline {
-      color: $border-blue;
-      font-size: 25px;
-    }
     &__paragraph {
-      color: $dark-grey;
-      font-size: 14px;
       padding: 0 10%;
     }
 

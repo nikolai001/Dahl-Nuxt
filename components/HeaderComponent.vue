@@ -111,7 +111,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./assets/scss/assets/_colours";
+@import "./assets/scss/assets/_collections";
 
 .header {
   width: 100%;
@@ -197,16 +197,14 @@ export default {
 
 .content {
   &__headline {
-    color: $white;
-    font-size: 6.65vw;
+    @include headline($white, null);
     text-align: center;
     margin-bottom: 34px;
     padding: 0 5%;
   }
 
   &__paragraph {
-    color: $white;
-    font-size: 4.27vw;
+    @include paragraph($white, null);
     text-align: center;
     padding: 0 5%;
   }
@@ -328,18 +326,12 @@ export default {
 }
 
 .content__logo {
-  //position: absolute;
-  //bottom:18%;
-  //left:calc(-2.5vw - 22px + 9px + 50%);
   width: 100%;
   display: flex;
   justify-content: center;
-  //position: relative;
-  //top: 18.5vh;
   grid-row: 5;
   grid-column: 1/-1;
   z-index: 1;
-  //height:11.84vw;
 }
 
 .list__logo{
@@ -468,16 +460,14 @@ export default {
 
   .content {
     &__headline {
-      color: $white;
-      font-size: 25px;
+      @include headline($white,$headline--desktop);
       text-align: center;
       margin-bottom: 34px;
       padding: 0 5%;
     }
 
     &__paragraph {
-      color: $white;
-      font-size:14px;
+      @include paragraph($white,$paragraph--desktop);
       padding: 0 5%;
     }
 
@@ -698,7 +688,7 @@ export default {
     text-align:left;
     z-index:2;
     margin-top:120px;
-    color:$border-blue;
+    @include headline($blue,$headline--desktop);
     max-width:400px;
   }
 
@@ -707,7 +697,7 @@ export default {
     grid-row:2;
     text-align:left;
     z-index:2;
-    color:$border-blue;
+    @include paragraph($blue, $headline--desktop);
     max-width:400px;
   }
 

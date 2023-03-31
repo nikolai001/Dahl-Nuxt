@@ -1,6 +1,6 @@
 <template>
   <article class="contact-page">
-    <h1 class="contact-page__headline">Hovednummber <br> +45 40 13 94 20</h1>
+    <h1 class="contact-page__headline">Hovednummber <br> +45 54 92 19 99</h1>
     <div class="contact-page__employees">
       <employee-card-component v-for="employee in employees" :key="employee.id" :worker="employee"/>
     </div>
@@ -41,7 +41,7 @@ export default {
     display: flex;
     flex-direction: column;
     &__headline {
-      color: $blue;
+      @include headline;
       text-align: center;
       margin: 95px 0 65px 0;
     }
@@ -52,6 +52,14 @@ export default {
       max-width: 1000px;
       width: 100%;
       margin: 0 auto 85px auto;
+    }
+  }
+
+  @media (min-width: 600px) {
+    .contact-page {
+      &__headline {
+        @include headline(null, $headline--desktop);
+      }
     }
   }
 </style>
