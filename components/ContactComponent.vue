@@ -25,7 +25,7 @@ export default {
           },
           {
             id: 2,
-            name: "Svend Raahauge",
+            name: "Svend Viggo Raahauge",
             phone: "40139420",
             job: "Afdelingsleder"
           }

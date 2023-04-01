@@ -697,7 +697,7 @@ export default {
     grid-row:2;
     text-align:left;
     z-index:2;
-    @include paragraph($blue, $headline--desktop);
+    @include paragraph($blue, $paragraph--desktop);
     max-width:400px;
   }
 

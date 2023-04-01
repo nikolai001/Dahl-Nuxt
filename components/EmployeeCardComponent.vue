@@ -50,15 +50,14 @@ export default {
             grid-column: 2/3;
             display: flex;
             align-items: center;
-            font-size: 4.5vw;
-            color: $blue;
+            @include paragraph($blue, $paragraph);
             &:nth-child(3) {
                 margin: 6% 0 6% 10%;
             }
             .field__icon {
                 margin: 0;
                 padding: 0;
-                font-size: 6vw;
+                @include icon($blue, $icon);
                 height: fit-content;
                 margin-right: 5%;
             }
@@ -73,14 +72,14 @@ export default {
             max-width: 250px;
             &__field {
                 margin: 0 0 0 20px;
-                font-size: 14px;
+                @include paragraph($blue, $paragraph--desktop);
                 &:nth-child(3) {
                     margin: 10px 0 10px 20px;
                 }
                 .field__icon {
                     margin: 0;
                     padding: 0;
-                    font-size: 20px;
+                    @include icon($blue, $icon--desktop);
                     height: fit-content;
                     margin-right: 5%;
                 }
@@ -90,24 +89,8 @@ export default {
 
     @media(min-width: 1000px) {
         .card {
-            width: 90%;
-            margin: 25px auto;
             padding: 20px 10px;
             max-width: 350px;
-            &__field {
-                margin: 0 0 0 20px;
-                font-size: 14px;
-                &:nth-child(3) {
-                    margin: 10px 0 10px 20px;
-                }
-                .field__icon {
-                    margin: 0;
-                    padding: 0;
-                    font-size: 20px;
-                    height: fit-content;
-                    margin-right: 5%;
-                }
-            }
         }
     }
 </style>

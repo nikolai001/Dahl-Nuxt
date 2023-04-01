@@ -6,11 +6,17 @@ $headline--desktop: 25px;
 
 $paragraph--desktop: 14px;
 
+$icon: 6vw;
+
+$icon--desktop: 30px;
+
+$input:4vw;
+
+$input--desktop:16px;
+
 $menu:5vw;
 
 $contact:3.7vw;
-
-$input:4vw;
 
 $big-text:6.5vw;
 
@@ -22,8 +28,13 @@ $submit:18px;
     font-family: "Noto Sans", sans-serif;
 }
 
- @mixin paragraph($color: $border,$fontSize: 4.27vw) {
+@mixin paragraph($color: $border,$fontSize: 4.27vw) {
     font-size: $fontSize;
     color: $color;
     font-family: "Noto Sans", sans-serif;
- }
+}
+
+@mixin icon ($color: $blue, $fontSize: $icon) {
+    color: $color;
+    font-size: $fontSize;
+}

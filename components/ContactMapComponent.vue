@@ -78,9 +78,9 @@ export default {
       }
     },
 	submit() {
-		if (this.request.name.length > 1 && this.request.mail.length > 1 && this.request.phone.length > 1 && this.request.message.length > 1 && !this.request.terms) {
+		if (this.request.name.length > 1 && this.request.mail.length > 1 && this.request.phone.length > 1 && this.request.message.length > 1 && this.request.terms) {
+			alert(this.request)
 			this.clear()
-			alert('Went through')
 		}
 	}
 	},
@@ -105,10 +105,10 @@ export default {
 		border: none;
 	}
 	&__headline {
-    width: 90%;
-    margin: 10px auto;
+		width: 90%;
+		margin: 10px auto;
 		text-align: left;
-    color: $border;
+		@include headline($border, $paragraph)
 	}
 	&__form {
 		display: flex;
@@ -118,7 +118,7 @@ export default {
 		.form__terms {
 			width: 90%;
 			margin: 0 auto;
-			font-size: 2.5vw;
+			@include paragraph(null,2.5vw);
 			padding: 1% 1%;
 		}
 
@@ -130,7 +130,7 @@ export default {
 				&--submit {
 					background-color: $cta-blue;
 					border-radius: $rounded-border;
-					color: $white;
+					@include paragraph($white,default);
 					text-align: center;
 					width: 40%;
 					max-width: 120px;
@@ -141,7 +141,7 @@ export default {
 				}
 				&--cancel {
 					background-color: transparent;
-					color: $inactive;
+					@include paragraph($inactive,default);
 					border: none;
 					width: fit-content;
 					margin: 0 auto;
@@ -161,15 +161,18 @@ export default {
 			margin: 10px auto;
 			overflow: hidden;
 			background-color: $background-white;
-
+			@include paragraph(null,$input);
       &::placeholder {
-        color: $border;
+		@include paragraph($border,default);
         opacity: 1;
       }
 
 			&:focus {
 				border: solid 1px $blue;
-				color: $blue;
+				@include paragraph($blue,default);
+				&::placeholder { 
+					@include paragraph($blue,default);
+				}
 			}
 		}
 	}
@@ -190,12 +193,16 @@ export default {
 			grid-row: 1;
 		}
 
+		&__headline {
+			@include headline($border, $paragraph--desktop)
+		}
+
 		&__form {
 
 			.form__terms {
 				width: 90%;
 				margin: 0 auto;
-				font-size: 12px;
+				@include paragraph(null,12px);
 				padding: 1% 1%;
 			}
 
@@ -204,6 +211,7 @@ export default {
 				min-height: unset;
 				width: 90%;
 				margin: 12px auto;
+				@include paragraph(null,$input--desktop);
 			}
 
 			.form__button-holder {
