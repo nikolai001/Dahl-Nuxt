@@ -67,10 +67,10 @@
       >
         <button
           type="button"
-          class="contact-form__close"
+          class="contact-form__close material-symbols-rounded"
           @click="ContactOpen = false"
         >
-          X
+          close
         </button>
         <p class="contact-form__paragraph" @click="ContactOpen = false">Kontakt os I dag</p>
         <input
@@ -176,9 +176,8 @@ export default {
 }
 
 .item__link {
-  font-size: 5vw;
+  @include paragraph($cta-blue,$menu);
   text-decoration: none;
-  color: $cta-blue;
   font-weight: 500;
 }
 
@@ -197,26 +196,16 @@ export default {
 
 .content {
   &__headline {
-    @include headline($white, null);
+    @include headline($white, $headline);
     text-align: center;
     margin-bottom: 34px;
     padding: 0 5%;
   }
 
   &__paragraph {
-    @include paragraph($white, null);
+    @include paragraph($white, $paragraph);
     text-align: center;
     padding: 0 5%;
-  }
-
-  &__service {
-    color: #fff;
-    text-decoration: none;
-    border: solid $white 1px;
-    padding: 4px 17px;
-    justify-self: center;
-    margin: 42px 0 85px 0;
-    font-size: 4.27vw;
   }
 
   &__contact {
@@ -225,11 +214,10 @@ export default {
     border-radius: 10em;
     border: none;
     background-color: $white;
-    color: $blue;
+    @include paragraph($blue,$contact);
     padding: 11px 15px;
     grid-row: 4;
     grid-column: 1/-1;
-    font-size: 3.7vw;
     margin-top: 34px;
     cursor:pointer;
     &-form {
@@ -250,16 +238,13 @@ export default {
 .contact-form {
   &__input {
     width: 100%;
-    border-color: $border-blue;
-    color: $blue;
-    padding: 10px 0;
-    text-indent: 10px;
-    font-size: 4vw;
+    border:1px solid $border-blue;
+    padding: 10px 10px;
+    @include paragraph($blue,$input);
     box-sizing: border-box;
-  }
-
-  &__input:focus {
-    border: 2px solid $border-blue;
+    &:focus {
+      border: 2px solid $border-blue;
+    }
   }
 
   &--name {
@@ -271,23 +256,19 @@ export default {
   &__message {
     grid-column: 1/-1;
     width: 100%;
-    border-color: $border-blue;
-    color: $blue;
+    border: 1px solid $border-blue;
     resize: none;
-    text-indent: 10px;
-    font-size: 4vw;
-    padding: 10px 0;
+    @include paragraph($blue, $input);
+    padding: 10px 10px;
     box-sizing: border-box;
-  }
-
-  &__message:focus {
-    border: 2px solid $border-blue;
+    &:focus {
+      border: 2px solid $border-blue;
+    }
   }
 
   &__paragraph {
-    color: $blue;
+    @include paragraph($blue,$paragraph);
     text-align: center;
-    font-size: 4.27vw;
     grid-column: 1/-1;
     cursor:pointer;
   }
@@ -296,11 +277,10 @@ export default {
     width: 100%;
     grid-column: 1/-1;
     background-color: $cta-blue;
-    color: $white;
+    @include paragraph($white,$input);
     padding: 12px;
     outline: none;
     border: none;
-    font-size: 4vw;
   }
 
   &__close {
@@ -310,11 +290,11 @@ export default {
     grid-column: 2/3;
     justify-self: end;
     font-weight: 700;
-    font-size: 5vw;
     margin-right: 10%;
     margin: -15% 0;
+    padding: 0;
     background-color: $cta-blue;
-    color: $white;
+    @include icon($white,$icon);
     width: 8vw;
     height: 8vw;
     border-radius: 5em;
@@ -366,11 +346,11 @@ export default {
 
 .link {
   text-decoration: none;
-  font-size: 4vw;
+  @include paragraph(null,$input);
   display: grid;
   grid-template-columns: 0.44fr 1fr;
   &--default-colour {
-    color: $blue;
+    @include paragraph($blue,null);
   }
 
   &--black {
@@ -382,7 +362,7 @@ export default {
   }
 
   &--big-text {
-    font-size: 6.5vw;
+    @include paragraph(null,$big-text);
   }
 
   &--medium {
@@ -394,12 +374,12 @@ export default {
   }
 
   &--lighten {
-    color: $light-grey;
+    @include paragraph($light-grey,null);
     margin-right: 4px;
   }
 
   &--darken {
-    color: $dark-blue;
+    @include paragraph($dark-blue,null);
   }
 
   &__line {
@@ -435,9 +415,8 @@ export default {
   }
 
   .item__link {
-    font-size: 20px;
+    @include paragraph($cta-blue,$menu--tablet);
     text-decoration: none;
-    color: $cta-blue;
     font-weight: 500;
   }
 
@@ -477,7 +456,7 @@ export default {
       padding: 11px 15px;
       grid-row: 4;
       grid-column: 1/-1;
-      font-size: 14px;
+      @include paragraph(null, $paragraph--desktop);
       margin-top: 34px;
       max-width:150px;
       margin-bottom:117px;
@@ -500,10 +479,7 @@ export default {
     &__input {
       width: 58%;
       border-color: $border-blue;
-      color: $blue;
-      padding: 10px 0;
-      text-indent: 10px;
-      font-size: 14px;
+      @include paragraph($blue, $paragraph--desktop);
     }
 
     &__input:focus {
@@ -522,12 +498,7 @@ export default {
       grid-column: 1/-1;
       width: 60%;
       border-color: $border-blue;
-      color: $blue;
-      resize: none;
-      text-indent: 10px;
-      font-size: 14px;
-      padding: 10px 0;
-      box-sizing: border-box;
+      @include paragraph($blue, $paragraph--desktop);
     }
 
     &__message:focus {
@@ -535,9 +506,8 @@ export default {
     }
 
     &__paragraph {
-      color: $blue;
+      @include paragraph($blue, $paragraph--desktop);
       text-align: center;
-      font-size: 4.27vw;
       grid-column: 1/-1;
     }
 
@@ -545,19 +515,17 @@ export default {
       width: 60%;
       grid-column: 1/-1;
       background-color: $cta-blue;
-      color: $white;
+      @include paragraph($white, $submit);
       padding: 12px;
       outline: none;
       border: none;
-      font-size: 18px;
     }
 
     &__close {
-      font-size: 18px;
+      @include icon($white, 24px);
       margin-right: 10%;
       margin: -15% 0;
       background-color: $cta-blue;
-      color: $white;
       width: 35px;
       height: 35px;
       border-radius: 5em;
@@ -595,16 +563,13 @@ export default {
     text-decoration: none;
     display:flex;
     margin-left:10%;
-    &--default-colour {
-      color: $blue;
-    }
 
     &--big-text {
-      font-size: 25px;
+      @include paragraph(null,$headline--desktop);
     }
 
     &--medium {
-      font-size: 14px;
+      @include paragraph(null,$paragraph--desktop);
     }
 
     &__line {
@@ -625,7 +590,7 @@ export default {
   .header__content{
     grid-template-columns:1fr 1fr;
     overflow:hidden;
-    background-size:130%; //set to 120% on bigger screens
+    background-size:130%;
   }
 
   .list__burger {
@@ -659,8 +624,7 @@ export default {
   }
 
   .item__link{
-    font-size:14px;
-    color:$white;
+    @include paragraph($white, $paragraph--desktop);
     font-weight:400;
   }
 

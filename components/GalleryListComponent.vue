@@ -61,7 +61,7 @@ export default {
 			max-width:94px;
 			min-width:80px;
 			text-align: center;
-			color: $background-white;
+			@include paragraph($background-white,null);
 			margin: 0 0 0 auto;
 			transform: translateX(25%) translateY(50%) rotate(45deg);
 			box-shadow: $el-1;
@@ -70,10 +70,9 @@ export default {
 
 	.project__cta {
 		background-color: $cta-blue;
-		color: $background-white;
+		@include paragraph($background-white, $paragraph--desktop);
 		border: none;
 		border-radius: $rounded-border;
-		font-size: 14px;
 		padding: 8px 10px;
 		margin: 14px 22px 24px auto;		
 		cursor: pointer;
@@ -89,10 +88,12 @@ export default {
 	.project__title {
 		margin: 20px auto 24px auto;
 		text-align: center;
+		@include paragraph(black, clamp($paragraph--desktop,$paragraph,18px));
 	}
 
 	.project__description {
 		padding: 0 24px;
+		@include paragraph(black, clamp($paragraph--desktop,$paragraph,18px));
 	}
 
 }
@@ -104,6 +105,16 @@ export default {
 		margin: 25px 25px;
 		&:nth-child(1) {
 			margin: 25px 0;
+		}
+
+		.project__title {
+			margin: 20px auto 24px auto;
+			text-align: center;
+			@include paragraph(black, $paragraph--desktop); 
+		}
+
+		.project__description {
+			@include paragraph(black, $paragraph--desktop);
 		}
 	}
 }

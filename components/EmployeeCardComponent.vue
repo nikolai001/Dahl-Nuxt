@@ -69,7 +69,7 @@ export default {
             width: 90%;
             margin: 25px auto;
             padding: 10px 5px;
-            max-width: 250px;
+            max-width: 280px;
             &__field {
                 margin: 0 0 0 20px;
                 @include paragraph($blue, $paragraph--desktop);

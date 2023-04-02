@@ -21,7 +21,7 @@ export default {
             id: 1,
             name: "Nikolai Raahauge",
             phone: "29875651",
-            job: "Web master"
+            job: "Webmaster"
           },
           {
             id: 2,
