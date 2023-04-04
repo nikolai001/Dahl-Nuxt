@@ -104,6 +104,7 @@ export default {
 		box-sizing: border-box;
 		margin: auto 0;
 		padding: 5px 5px;
+		@include paragraph($border, $paragraph);
 	}
 	&__progress {
 		width: 100%;
@@ -150,7 +151,6 @@ export default {
 			align-self: flex-start;
 			grid-row: 1 / span 1;
 			grid-column: 1/2;
-			color: $cta-blue;
 			justify-self: end;
 			background-color: $background-white;
 			width: 10%;
@@ -164,6 +164,7 @@ export default {
             display: flex;
             flex-direction: column;
             place-content: center;
+			@include paragraph($cta-blue, $input);
 		}
 	}
 }
@@ -177,6 +178,8 @@ export default {
 			min-height: 40px;
 			margin: auto 0;
 			padding: 5px 5px;
+			@include paragraph($border, $paragraph--desktop);
+
 		}
 		&__progress {
 			padding: 0 5px;
@@ -188,6 +191,7 @@ export default {
 		&__image {
 			.image__indicator {
 				padding: 4px;
+				@include paragraph($cta-blue, $input--desktop);
 			}
 		}
 	}

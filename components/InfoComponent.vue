@@ -91,11 +91,11 @@ export default {
 }
 .buttons__link {
   background-color: $border-blue;
-  color: $white;
   width: 35%;
   text-align: center;
   text-decoration: none;
   font-weight: 300;
+  @include paragraph($white, $paragraph);
   padding: 9px 0;
   height: 25px;
 }

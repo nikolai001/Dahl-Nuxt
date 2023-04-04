@@ -64,7 +64,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./assets/scss/assets/_colours";
+@import "./assets/scss/assets/_collections";
 
 .header {
   width: 100%;
@@ -129,9 +129,8 @@ export default {
 }
 
 .item__link {
-  font-size: 5vw;
+  @include paragraph($cta-blue,$menu);
   text-decoration: none;
-  color: $cta-blue;
   font-weight: 500;
 }
 
@@ -164,11 +163,11 @@ export default {
 
 .link {
   text-decoration: none;
-  font-size: 4vw;
+  @include paragraph(null,$input);
   display: grid;
   grid-template-columns: 0.44fr 1fr;
   &--default-colour {
-    color: $blue;
+    @include paragraph($blue,null);
   }
 
   &--black {
@@ -180,7 +179,7 @@ export default {
   }
 
   &--big-text {
-    font-size: 6.5vw;
+    @include paragraph(null,$big-text);
   }
 
   &--medium {
@@ -192,12 +191,13 @@ export default {
   }
 
   &--lighten {
-    color: $light-grey;
+    @include paragraph($light-grey,null);
     margin-right: 4px;
   }
 
   &--darken {
     color: $dark-blue;
+    @include paragraph($dark-blue,null);
   }
 
   &__line {
@@ -233,9 +233,8 @@ export default {
   }
 
   .item__link {
-    font-size: 20px;
+    @include paragraph($cta-blue,$menu--tablet);
     text-decoration: none;
-    color: $cta-blue;
     font-weight: 500;
   }
 
@@ -284,11 +283,11 @@ export default {
     }
 
     &--big-text {
-      font-size: 25px;
+      @include paragraph(null,$headline--desktop);
     }
 
     &--medium {
-      font-size: 14px;
+      @include paragraph(null,$paragraph--desktop);
     }
 
     &__line {
@@ -351,6 +350,7 @@ export default {
   .item__link{
     font-size:14px;
     color:$white;
+    @include paragraph($white,$menu--desktop);
     font-weight:400;
   }
 
