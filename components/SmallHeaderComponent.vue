@@ -33,13 +33,13 @@
           <nuxt-link to="#" class="item__link">SERVICES</nuxt-link>
         </li>
         <li class="menu__item">
-          <nuxt-link to="About" class="item__link">OM OS</nuxt-link>
+          <nuxt-link to="/About" class="item__link">OM OS</nuxt-link>
         </li>
         <li class="menu__item">
-          <nuxt-link to="Galleries" class="item__link">GALLERI</nuxt-link>
+          <nuxt-link to="/Galleries" class="item__link">GALLERI</nuxt-link>
         </li>
         <li class="menu__item">
-          <nuxt-link to="Contact" class="item__link">KONTAKT</nuxt-link>
+          <nuxt-link to="/Contact" class="item__link">KONTAKT</nuxt-link>
         </li>
       </menu>
     </nav>
