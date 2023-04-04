@@ -19,8 +19,8 @@
       </p>
 
       <div class="info__buttons">
-        <router-link class="buttons__link" to="#About">OM OS</router-link>
-        <router-link class="buttons__link" to="#Services">SERVICES</router-link>
+        <nuxt-link class="buttons__link" to="#About">OM OS</nuxt-link>
+        <nuxt-link class="buttons__link" to="#Services">SERVICES</nuxt-link>
       </div>
 
       <div class="info__image-container">
@@ -47,20 +47,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./assets/scss/assets/_colours";
+@import "./assets/scss/assets/_collections";
 
 .info {
   display: grid;
   &__headline {
-    color: $border-blue;
-    font-size: 6.65vw;
+    @include headline;
     text-align: left;
     padding: 0 5%;
     margin: 77px 0 32px 0;
   }
   &__paragraph {
-    color: $dark-grey;
-    font-size: 4.27vw;
+    @include paragraph;
     text-align: justify;
     padding: 0 5%;
     margin-bottom: 32px;
@@ -93,11 +91,11 @@ export default {
 }
 .buttons__link {
   background-color: $border-blue;
-  color: $white;
   width: 35%;
   text-align: center;
   text-decoration: none;
   font-weight: 300;
+  @include paragraph($white, $paragraph);
   padding: 9px 0;
   height: 25px;
 }
@@ -107,20 +105,17 @@ export default {
     background-image: url("../assets/Lolland-Falster.svg");
     background-repeat: no-repeat;
     background-size: cover;
-    //grid-template-columns: 1fr 1fr;
     display:flex;
     &__about{
       width:60%;
     }
     &__headline {
-      color: $border-blue;
-      font-size: 25px;
+      @include headline(null, $headline--desktop);
       grid-column: 1/2;
       padding: 0 10%;
     }
     &__paragraph {
-      color: $dark-grey;
-      font-size: 14px;
+      @include paragraph(null,$paragraph--desktop);
       padding: 0 10%;
       grid-column: 1/2;
     }
@@ -152,7 +147,7 @@ export default {
   }
 
   .buttons__link {
-    font-size: 14px;
+    @include paragraph(null, $paragraph--desktop);
     width: 45%;
     padding: 9px 0 6px 0;
 
@@ -171,13 +166,7 @@ export default {
       width:100%;
     }
 
-    &__headline {
-      color: $border-blue;
-      font-size: 25px;
-    }
     &__paragraph {
-      color: $dark-grey;
-      font-size: 14px;
       padding: 0 10%;
     }
 

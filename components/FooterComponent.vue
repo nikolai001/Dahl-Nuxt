@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-      <router-link to="#" class="link">
+      <nuxt-link to="/" class="link">
         <span class="link--black link--default-colour link--big-text"
           >DAHL</span
         >
@@ -9,9 +9,7 @@
           <span class="link--lighten">ELFIRMA</span>
           <span class="link--darken">NAKSKOV</span></span
         >
-      </router-link>
-        <p class="footer__credit">Design af Peter Eilerskov</p>
-        <p class="footer__credit">Kodet af Nikolai Raahauge</p>
+      </nuxt-link>
   </footer>
 </template>
 
@@ -27,24 +25,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./assets/scss/assets/_colours";
+@import "./assets/scss/assets/_collections";
 
 .footer{
-display: flex;
-align-content: center;
-flex-wrap: wrap;
-flex-direction:column;
-list-style-type: none;
-background-color:$border-blue;
-height:200px;
-  &__credit{
-    color:$white;
-    font-size:2vw;
-    text-align:center;
-  }
-  &__credit:nth-child(2){
-    margin-top:50px;
-  }
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  flex-direction:column;
+  list-style-type: none;
+  background-color:$border-blue;
+  height:200px;
 }
 
 .link {
@@ -53,8 +43,7 @@ height:200px;
   transform:translateX(-6px);
   height:fit-content;
   margin-top:25px;
-  font-size: 4vw;
-  //grid-template-columns: 0.44fr 1fr;
+  @include paragraph($white, 4vw);
 
   &--default-colour {
     color: $white;
@@ -69,7 +58,7 @@ height:200px;
   }
 
   &--big-text {
-    font-size: 6.5vw;
+    @include paragraph(null,6.5vw);
     transform:translateX(-6px);
   }
 
@@ -82,42 +71,33 @@ height:200px;
   }
 
   &--lighten {
-    color: $white;
+    @include paragraph($white,null);
     transform:translateX(6px);
-    //margin-right: 4px;
   }
 
   &--darken {
-    color: $white;
+    @include paragraph($white,null);
     transform:translateX(12px);
   }
 
   &__line {
     height: 55%;
-    //margin: 0 7.3%;
     border: solid $white 0.05em;
   }
 }
 
 @media (min-width: 600px) {
 
-  .footer__credit{
-    font-size:10px;
-  }
+  .link {
+      @include paragraph(null, $paragraph--desktop);
+    &--big-text {
+      @include paragraph(null, $headline--desktop);
+    }
 
-.link {
-    font-size:14px;
-  &--big-text {
-    font-size: 25px;
+    &__line {
+      height: 55%;
+      border: solid $white 0.5px;
+    }
   }
-
-  &__line {
-    height: 55%;
-    border: solid $white 0.5px;
-  }
-}
-}
-
-@media (min-width: 1000px) {
 }
 </style>

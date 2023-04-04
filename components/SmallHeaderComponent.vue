@@ -3,12 +3,12 @@
     <nav :class="{ 'header__nav--displayed':MenuToggled }" class="header__nav">
       <ul class="nav__list">
         <li class="list__logo">
-          <router-link to="/">
+          <nuxt-link to="/">
           <img src="@/assets/logo.svg" alt="Dahl logo" class="logo__image">
-          </router-link>
+          </nuxt-link>
         </li>
         <li class="list__company">
-          <router-link to="/" class="link">
+          <nuxt-link to="/" class="link">
             <span class="link--black link--default-colour link--big-text"
               >DAHL</span
             >
@@ -17,7 +17,7 @@
               <span class="link--lighten">ELFIRMA</span>
               <span class="link--darken">NAKSKOV</span></span
             >
-          </router-link>
+          </nuxt-link>
         </li>
         <li class="list__burger">
           <button class="burger__button" @click="MenuToggled = !MenuToggled">
@@ -27,19 +27,19 @@
       </ul>
       <menu :class="{displayMenu:MenuToggled}" class="header__menu">
         <li class="menu__item">
-          <router-link to="/" class="item__link">HJEM</router-link>
+          <nuxt-link to="/" class="item__link">HJEM</nuxt-link>
         </li>
         <li class="menu__item">
-          <router-link to="#" class="item__link">SERVICES</router-link>
+          <nuxt-link to="#" class="item__link">SERVICES</nuxt-link>
         </li>
         <li class="menu__item">
-          <router-link to="About" class="item__link">OM OS</router-link>
+          <nuxt-link to="/About" class="item__link">OM OS</nuxt-link>
         </li>
         <li class="menu__item">
-          <router-link to="Galleries" class="item__link">GALLERI</router-link>
+          <nuxt-link to="/Galleries" class="item__link">GALLERI</nuxt-link>
         </li>
         <li class="menu__item">
-          <router-link to="Contact" class="item__link">KONTAKT</router-link>
+          <nuxt-link to="/Contact" class="item__link">KONTAKT</nuxt-link>
         </li>
       </menu>
     </nav>
@@ -64,7 +64,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./assets/scss/assets/_colours";
+@import "./assets/scss/assets/_collections";
 
 .header {
   width: 100%;
@@ -129,9 +129,8 @@ export default {
 }
 
 .item__link {
-  font-size: 5vw;
+  @include paragraph($cta-blue,$menu);
   text-decoration: none;
-  color: $cta-blue;
   font-weight: 500;
 }
 
@@ -164,11 +163,11 @@ export default {
 
 .link {
   text-decoration: none;
-  font-size: 4vw;
+  @include paragraph(null,$input);
   display: grid;
   grid-template-columns: 0.44fr 1fr;
   &--default-colour {
-    color: $blue;
+    @include paragraph($blue,null);
   }
 
   &--black {
@@ -180,7 +179,7 @@ export default {
   }
 
   &--big-text {
-    font-size: 6.5vw;
+    @include paragraph(null,$big-text);
   }
 
   &--medium {
@@ -192,12 +191,12 @@ export default {
   }
 
   &--lighten {
-    color: $light-grey;
+    @include paragraph($light-grey,null);
     margin-right: 4px;
   }
 
   &--darken {
-    color: $dark-blue;
+    @include paragraph($dark-blue,null);
   }
 
   &__line {
@@ -233,9 +232,8 @@ export default {
   }
 
   .item__link {
-    font-size: 20px;
+    @include paragraph($cta-blue,$menu--tablet);
     text-decoration: none;
-    color: $cta-blue;
     font-weight: 500;
   }
 
@@ -280,15 +278,15 @@ export default {
     display:flex;
     margin-left:10%;
     &--default-colour {
-      color: $blue;
+      @include paragraph($blue,null);
     }
 
     &--big-text {
-      font-size: 25px;
+      @include paragraph(null,$headline--desktop);
     }
 
     &--medium {
-      font-size: 14px;
+      @include paragraph(null,$paragraph--desktop);
     }
 
     &__line {
@@ -349,8 +347,7 @@ export default {
   }
 
   .item__link{
-    font-size:14px;
-    color:$white;
+    @include paragraph($white,$menu--desktop);
     font-weight:400;
   }
 

@@ -3,12 +3,12 @@
     <nav :class="{ 'header__nav--displayed':MenuToggled }" class="header__nav">
       <ul class="nav__list">
         <li class="list__logo">
-          <router-link to="/">
+          <nuxt-link to="/">
           <img src="@/assets/logo.svg" alt="Dahl logo" class="logo__image">
-          </router-link>
+          </nuxt-link>
         </li>
         <li class="list__company">
-          <router-link to="/" class="link">
+          <nuxt-link to="/" class="link">
             <span class="link--black link--default-colour link--big-text"
               >DAHL</span
             >
@@ -17,7 +17,7 @@
               <span class="link--lighten">ELFIRMA</span>
               <span class="link--darken">NAKSKOV</span></span
             >
-          </router-link>
+          </nuxt-link>
         </li>
         <li class="list__burger">
           <button class="burger__button" @click="MenuToggled = !MenuToggled">
@@ -27,19 +27,19 @@
       </ul>
       <menu :class="{displayMenu:MenuToggled}" class="header__menu">
         <li class="menu__item">
-          <router-link to="/" class="item__link">HJEM</router-link>
+          <nuxt-link to="/" class="item__link">HJEM</nuxt-link>
         </li>
         <li class="menu__item">
-          <router-link to="#" class="item__link">SERVICES</router-link>
+          <nuxt-link to="#" class="item__link">SERVICES</nuxt-link>
         </li>
         <li class="menu__item">
-          <router-link to="About" class="item__link">OM OS</router-link>
+          <nuxt-link to="/About" class="item__link">OM OS</nuxt-link>
         </li>
         <li class="menu__item">
-          <router-link to="Galleries" class="item__link">GALLERI</router-link>
+          <nuxt-link to="/Galleries" class="item__link">GALLERI</nuxt-link>
         </li>
         <li class="menu__item">
-          <router-link to="Contact" class="item__link">KONTAKT</router-link>
+          <nuxt-link to="/Contact" class="item__link">KONTAKT</nuxt-link>
         </li>
       </menu>
     </nav>
@@ -67,10 +67,10 @@
       >
         <button
           type="button"
-          class="contact-form__close"
+          class="contact-form__close material-symbols-rounded"
           @click="ContactOpen = false"
         >
-          X
+          close
         </button>
         <p class="contact-form__paragraph" @click="ContactOpen = false">Kontakt os I dag</p>
         <input
@@ -111,7 +111,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./assets/scss/assets/_colours";
+@import "./assets/scss/assets/_collections";
 
 .header {
   width: 100%;
@@ -176,9 +176,8 @@ export default {
 }
 
 .item__link {
-  font-size: 5vw;
+  @include paragraph($cta-blue,$menu);
   text-decoration: none;
-  color: $cta-blue;
   font-weight: 500;
 }
 
@@ -197,28 +196,16 @@ export default {
 
 .content {
   &__headline {
-    color: $white;
-    font-size: 6.65vw;
+    @include headline($white, $headline);
     text-align: center;
     margin-bottom: 34px;
     padding: 0 5%;
   }
 
   &__paragraph {
-    color: $white;
-    font-size: 4.27vw;
+    @include paragraph($white, $paragraph);
     text-align: center;
     padding: 0 5%;
-  }
-
-  &__service {
-    color: #fff;
-    text-decoration: none;
-    border: solid $white 1px;
-    padding: 4px 17px;
-    justify-self: center;
-    margin: 42px 0 85px 0;
-    font-size: 4.27vw;
   }
 
   &__contact {
@@ -227,11 +214,10 @@ export default {
     border-radius: 10em;
     border: none;
     background-color: $white;
-    color: $blue;
+    @include paragraph($blue,$contact);
     padding: 11px 15px;
     grid-row: 4;
     grid-column: 1/-1;
-    font-size: 3.7vw;
     margin-top: 34px;
     cursor:pointer;
     &-form {
@@ -252,16 +238,13 @@ export default {
 .contact-form {
   &__input {
     width: 100%;
-    border-color: $border-blue;
-    color: $blue;
-    padding: 10px 0;
-    text-indent: 10px;
-    font-size: 4vw;
+    border:1px solid $border-blue;
+    padding: 10px 10px;
+    @include paragraph($blue,$input);
     box-sizing: border-box;
-  }
-
-  &__input:focus {
-    border: 2px solid $border-blue;
+    &:focus {
+      border: 2px solid $border-blue;
+    }
   }
 
   &--name {
@@ -273,23 +256,19 @@ export default {
   &__message {
     grid-column: 1/-1;
     width: 100%;
-    border-color: $border-blue;
-    color: $blue;
+    border: 1px solid $border-blue;
     resize: none;
-    text-indent: 10px;
-    font-size: 4vw;
-    padding: 10px 0;
+    @include paragraph($blue, $input);
+    padding: 10px 10px;
     box-sizing: border-box;
-  }
-
-  &__message:focus {
-    border: 2px solid $border-blue;
+    &:focus {
+      border: 2px solid $border-blue;
+    }
   }
 
   &__paragraph {
-    color: $blue;
+    @include paragraph($blue,$paragraph);
     text-align: center;
-    font-size: 4.27vw;
     grid-column: 1/-1;
     cursor:pointer;
   }
@@ -298,11 +277,10 @@ export default {
     width: 100%;
     grid-column: 1/-1;
     background-color: $cta-blue;
-    color: $white;
+    @include paragraph($white,$input);
     padding: 12px;
     outline: none;
     border: none;
-    font-size: 4vw;
   }
 
   &__close {
@@ -312,11 +290,11 @@ export default {
     grid-column: 2/3;
     justify-self: end;
     font-weight: 700;
-    font-size: 5vw;
     margin-right: 10%;
     margin: -15% 0;
+    padding: 0;
     background-color: $cta-blue;
-    color: $white;
+    @include icon($white,$icon);
     width: 8vw;
     height: 8vw;
     border-radius: 5em;
@@ -328,18 +306,12 @@ export default {
 }
 
 .content__logo {
-  //position: absolute;
-  //bottom:18%;
-  //left:calc(-2.5vw - 22px + 9px + 50%);
   width: 100%;
   display: flex;
   justify-content: center;
-  //position: relative;
-  //top: 18.5vh;
   grid-row: 5;
   grid-column: 1/-1;
   z-index: 1;
-  //height:11.84vw;
 }
 
 .list__logo{
@@ -374,11 +346,11 @@ export default {
 
 .link {
   text-decoration: none;
-  font-size: 4vw;
+  @include paragraph(null,$input);
   display: grid;
   grid-template-columns: 0.44fr 1fr;
   &--default-colour {
-    color: $blue;
+    @include paragraph($blue,null);
   }
 
   &--black {
@@ -390,7 +362,7 @@ export default {
   }
 
   &--big-text {
-    font-size: 6.5vw;
+    @include paragraph(null,$big-text);
   }
 
   &--medium {
@@ -402,12 +374,12 @@ export default {
   }
 
   &--lighten {
-    color: $light-grey;
+    @include paragraph($light-grey,null);
     margin-right: 4px;
   }
 
   &--darken {
-    color: $dark-blue;
+    @include paragraph($dark-blue,null);
   }
 
   &__line {
@@ -443,9 +415,8 @@ export default {
   }
 
   .item__link {
-    font-size: 20px;
+    @include paragraph($cta-blue,$menu--tablet);
     text-decoration: none;
-    color: $cta-blue;
     font-weight: 500;
   }
 
@@ -468,16 +439,14 @@ export default {
 
   .content {
     &__headline {
-      color: $white;
-      font-size: 25px;
+      @include headline($white,$headline--desktop);
       text-align: center;
       margin-bottom: 34px;
       padding: 0 5%;
     }
 
     &__paragraph {
-      color: $white;
-      font-size:14px;
+      @include paragraph($white,$paragraph--desktop);
       padding: 0 5%;
     }
 
@@ -487,7 +456,7 @@ export default {
       padding: 11px 15px;
       grid-row: 4;
       grid-column: 1/-1;
-      font-size: 14px;
+      @include paragraph(null, $paragraph--desktop);
       margin-top: 34px;
       max-width:150px;
       margin-bottom:117px;
@@ -510,10 +479,7 @@ export default {
     &__input {
       width: 58%;
       border-color: $border-blue;
-      color: $blue;
-      padding: 10px 0;
-      text-indent: 10px;
-      font-size: 14px;
+      @include paragraph($blue, $paragraph--desktop);
     }
 
     &__input:focus {
@@ -532,12 +498,7 @@ export default {
       grid-column: 1/-1;
       width: 60%;
       border-color: $border-blue;
-      color: $blue;
-      resize: none;
-      text-indent: 10px;
-      font-size: 14px;
-      padding: 10px 0;
-      box-sizing: border-box;
+      @include paragraph($blue, $paragraph--desktop);
     }
 
     &__message:focus {
@@ -545,9 +506,8 @@ export default {
     }
 
     &__paragraph {
-      color: $blue;
+      @include paragraph($blue, $paragraph--desktop);
       text-align: center;
-      font-size: 4.27vw;
       grid-column: 1/-1;
     }
 
@@ -555,19 +515,17 @@ export default {
       width: 60%;
       grid-column: 1/-1;
       background-color: $cta-blue;
-      color: $white;
+      @include paragraph($white, $submit);
       padding: 12px;
       outline: none;
       border: none;
-      font-size: 18px;
     }
 
     &__close {
-      font-size: 18px;
+      @include icon($white, 24px);
       margin-right: 10%;
       margin: -15% 0;
       background-color: $cta-blue;
-      color: $white;
       width: 35px;
       height: 35px;
       border-radius: 5em;
@@ -605,16 +563,13 @@ export default {
     text-decoration: none;
     display:flex;
     margin-left:10%;
-    &--default-colour {
-      color: $blue;
-    }
 
     &--big-text {
-      font-size: 25px;
+      @include paragraph(null,$headline--desktop);
     }
 
     &--medium {
-      font-size: 14px;
+      @include paragraph(null,$paragraph--desktop);
     }
 
     &__line {
@@ -635,7 +590,7 @@ export default {
   .header__content{
     grid-template-columns:1fr 1fr;
     overflow:hidden;
-    background-size:130%; //set to 120% on bigger screens
+    background-size:130%;
   }
 
   .list__burger {
@@ -669,8 +624,7 @@ export default {
   }
 
   .item__link{
-    font-size:14px;
-    color:$white;
+    @include paragraph($white, $paragraph--desktop);
     font-weight:400;
   }
 
@@ -698,7 +652,7 @@ export default {
     text-align:left;
     z-index:2;
     margin-top:120px;
-    color:$border-blue;
+    @include headline($blue,$headline--desktop);
     max-width:400px;
   }
 
@@ -707,7 +661,7 @@ export default {
     grid-row:2;
     text-align:left;
     z-index:2;
-    color:$border-blue;
+    @include paragraph($blue, $paragraph--desktop);
     max-width:400px;
   }
 
@@ -732,7 +686,7 @@ export default {
   }
 
   .contact-form__paragraph{
-    font-size:25px;
+    @include paragraph(null, $headline--desktop);
   }
 
   .contact-form__close{

@@ -104,6 +104,7 @@ export default {
 		box-sizing: border-box;
 		margin: auto 0;
 		padding: 5px 5px;
+		@include paragraph($border, $paragraph);
 	}
 	&__progress {
 		width: 100%;
@@ -120,12 +121,12 @@ export default {
 			background-color: $cta-blue;
 			border: none;
 			width: 8%;
-			color: $background-white;
+
 			cursor: pointer;
 			box-shadow: $el-1;
 			padding: 0;
 			aspect-ratio: 1/1;
-            font-size: 7vw;
+			@include icon($background-white, 7vw);
             &--left {
                 text-align: left;
             }
@@ -150,7 +151,6 @@ export default {
 			align-self: flex-start;
 			grid-row: 1 / span 1;
 			grid-column: 1/2;
-			color: $cta-blue;
 			justify-self: end;
 			background-color: $background-white;
 			width: 10%;
@@ -164,6 +164,7 @@ export default {
             display: flex;
             flex-direction: column;
             place-content: center;
+			@include paragraph($cta-blue, $input);
 		}
 	}
 }
@@ -177,17 +178,20 @@ export default {
 			min-height: 40px;
 			margin: auto 0;
 			padding: 5px 5px;
+			@include paragraph($border, $paragraph--desktop);
+
 		}
 		&__progress {
 			padding: 0 5px;
 			.progress__button {
                 width: 45px;
-                font-size: 42px;
+				@include icon(null, 42px);
 			}
 		}
 		&__image {
 			.image__indicator {
 				padding: 4px;
+				@include paragraph($cta-blue, $input--desktop);
 			}
 		}
 	}
