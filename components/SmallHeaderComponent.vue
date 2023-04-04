@@ -196,7 +196,6 @@ export default {
   }
 
   &--darken {
-    color: $dark-blue;
     @include paragraph($dark-blue,null);
   }
 
@@ -279,7 +278,7 @@ export default {
     display:flex;
     margin-left:10%;
     &--default-colour {
-      color: $blue;
+      @include paragraph($blue,null);
     }
 
     &--big-text {
@@ -348,8 +347,6 @@ export default {
   }
 
   .item__link{
-    font-size:14px;
-    color:$white;
     @include paragraph($white,$menu--desktop);
     font-weight:400;
   }

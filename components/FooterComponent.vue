@@ -89,9 +89,9 @@ export default {
 @media (min-width: 600px) {
 
   .link {
-      font-size:14px;
+      @include paragraph(null, $paragraph--desktop);
     &--big-text {
-      font-size: 25px;
+      @include paragraph(null, $headline--desktop);
     }
 
     &__line {

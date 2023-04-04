@@ -121,12 +121,12 @@ export default {
 			background-color: $cta-blue;
 			border: none;
 			width: 8%;
-			color: $background-white;
+
 			cursor: pointer;
 			box-shadow: $el-1;
 			padding: 0;
 			aspect-ratio: 1/1;
-            font-size: 7vw;
+			@include icon($background-white, 7vw);
             &--left {
                 text-align: left;
             }
@@ -185,7 +185,7 @@ export default {
 			padding: 0 5px;
 			.progress__button {
                 width: 45px;
-                font-size: 42px;
+				@include icon(null, 42px);
 			}
 		}
 		&__image {

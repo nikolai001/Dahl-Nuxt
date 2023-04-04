@@ -686,7 +686,7 @@ export default {
   }
 
   .contact-form__paragraph{
-    font-size:25px;
+    @include paragraph(null, $headline--desktop);
   }
 
   .contact-form__close{

@@ -147,7 +147,7 @@ export default {
   }
 
   .buttons__link {
-    font-size: 14px;
+    @include paragraph(null, $paragraph--desktop);
     width: 45%;
     padding: 9px 0 6px 0;
 
