@@ -19,8 +19,8 @@
       </p>
 
       <div class="info__buttons">
-        <router-link class="buttons__link" to="#About">OM OS</router-link>
-        <router-link class="buttons__link" to="#Services">SERVICES</router-link>
+        <nuxt-link class="buttons__link" to="#About">OM OS</nuxt-link>
+        <nuxt-link class="buttons__link" to="#Services">SERVICES</nuxt-link>
       </div>
 
       <div class="info__image-container">

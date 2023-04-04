@@ -3,12 +3,12 @@
     <nav :class="{ 'header__nav--displayed':MenuToggled }" class="header__nav">
       <ul class="nav__list">
         <li class="list__logo">
-          <router-link to="/">
+          <nuxt-link to="/">
           <img src="@/assets/logo.svg" alt="Dahl logo" class="logo__image">
-          </router-link>
+          </nuxt-link>
         </li>
         <li class="list__company">
-          <router-link to="/" class="link">
+          <nuxt-link to="/" class="link">
             <span class="link--black link--default-colour link--big-text"
               >DAHL</span
             >
@@ -17,7 +17,7 @@
               <span class="link--lighten">ELFIRMA</span>
               <span class="link--darken">NAKSKOV</span></span
             >
-          </router-link>
+          </nuxt-link>
         </li>
         <li class="list__burger">
           <button class="burger__button" @click="MenuToggled = !MenuToggled">
@@ -27,19 +27,19 @@
       </ul>
       <menu :class="{displayMenu:MenuToggled}" class="header__menu">
         <li class="menu__item">
-          <router-link to="/" class="item__link">HJEM</router-link>
+          <nuxt-link to="/" class="item__link">HJEM</nuxt-link>
         </li>
         <li class="menu__item">
-          <router-link to="#" class="item__link">SERVICES</router-link>
+          <nuxt-link to="#" class="item__link">SERVICES</nuxt-link>
         </li>
         <li class="menu__item">
-          <router-link to="About" class="item__link">OM OS</router-link>
+          <nuxt-link to="About" class="item__link">OM OS</nuxt-link>
         </li>
         <li class="menu__item">
-          <router-link to="Galleries" class="item__link">GALLERI</router-link>
+          <nuxt-link to="Galleries" class="item__link">GALLERI</nuxt-link>
         </li>
         <li class="menu__item">
-          <router-link to="Contact" class="item__link">KONTAKT</router-link>
+          <nuxt-link to="Contact" class="item__link">KONTAKT</nuxt-link>
         </li>
       </menu>
     </nav>

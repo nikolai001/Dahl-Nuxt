@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-      <router-link to="#" class="link">
+      <nuxt-link to="/" class="link">
         <span class="link--black link--default-colour link--big-text"
           >DAHL</span
         >
@@ -9,7 +9,7 @@
           <span class="link--lighten">ELFIRMA</span>
           <span class="link--darken">NAKSKOV</span></span
         >
-      </router-link>
+      </nuxt-link>
   </footer>
 </template>
 
