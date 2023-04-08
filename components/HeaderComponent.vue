@@ -30,7 +30,7 @@
           <nuxt-link to="/" class="item__link">HJEM</nuxt-link>
         </li>
         <li class="menu__item">
-          <nuxt-link to="#" class="item__link">SERVICES</nuxt-link>
+          <nuxt-link to="/Services" class="item__link">SERVICES</nuxt-link>
         </li>
         <li class="menu__item">
           <nuxt-link to="/About" class="item__link">OM OS</nuxt-link>
