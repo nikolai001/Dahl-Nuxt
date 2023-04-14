@@ -59,7 +59,7 @@
         <button v-if="!ContactOpen" class="logo__cta"></button>
       </div>
 
-      <form
+      <!-- <form
         action=""
         method="post"
         :class="{displayContact:ContactOpen}"
@@ -91,15 +91,21 @@
           class="contact-form__message"
         ></textarea>
         <button type="submit" class="contact-form__submit">SEND</button>
-      </form>
+      </form> -->
+      <ContactformComponent :class="{noDisplay:ContactOpen}" class="content__contact-form" />
     </div>
   </header>
 </template>
 
 <script>
+import ContactformComponent from './ContactformComponent.vue';
 export default {
   name: "HeaderComponent",
-  props: {},
+
+  components: {
+		ContactformComponent,
+	},
+
   data() {
     return {
       ContactOpen: false,
@@ -167,8 +173,8 @@ export default {
   display:flex;
 }
 
-.displayContact{
-  display: grid !important;
+.noDisplay{
+  display: flex !important;
 }
 
 .menu__item {
@@ -221,16 +227,14 @@ export default {
     margin-top: 34px;
     cursor:pointer;
     &-form {
-      grid-template-columns: 1fr 1fr;
-      justify-items: center;
-      padding: 10% 5%;
-      gap: 6% 4%;
-      background-color: $white;
-      grid-row: 4/6;
-      margin-top: 34px;
-      grid-column: 1/-1;
-      z-index: 2;
-      display:none;
+        background-color: $white;
+        height: fit-content;
+        top: 0;
+        bottom: 0;
+        position: absolute;
+        margin: auto 0 0 0;
+        border-radius:0.5em 0.5em 0 0;
+        display:none;
     }
   }
 }
