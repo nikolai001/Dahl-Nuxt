@@ -55,6 +55,9 @@
 </template>
 
 <script>
+
+import { newRequest } from '@/static/API';
+
 export default {
 	data() {
 		return {
@@ -77,10 +80,13 @@ export default {
         e.target.style.height = `${e.target.scrollHeight}px`
       }
     },
-	submit() {
+	async submit() {
 		if (this.request.name.length > 1 && this.request.mail.length > 1 && this.request.phone.length > 1 && this.request.message.length > 1 && this.request.terms) {
-			alert(this.request)
-			this.clear()
+			let response = await newRequest(this.request)
+			if (response) {
+				console.log(response)
+				this.clear()
+			}
 		}
 	}
 	},
