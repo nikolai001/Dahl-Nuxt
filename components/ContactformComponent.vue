@@ -1,5 +1,6 @@
 <template>
 	<form class="contact-form">
+        <button v-show="closeButton" class="contact-form__close material-symbols-rounded" type="button" @click="$emit('close')">close</button>
 		<p class="contact-form__headline">Kontakt formular</p>
 		<input
 			class="contact-form__field"
@@ -70,6 +71,11 @@ export default {
 			},
 		};
 	},
+
+    props : {
+        closeButton: Boolean
+    },
+
 	methods: {
 		clear() {
 			this.request = { name: "", mail: "", phone: "", message: "", terms: false };
@@ -95,9 +101,25 @@ export default {
 @import '@/assets/scss/assets/_collections';
     
 .contact-form {
-    display: flex;
+    display: none;
     flex-direction: column;
     margin-bottom: 20px;
+
+    &__close {
+        border-radius: 0 $secondary-border 0 0;
+        background-color: $cta-blue;
+        @include icon($white, $icon);
+        width: 8%;
+        aspect-ratio: 1/1;
+        border: none;
+        position: absolute;
+        margin: 0 0 0 auto;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        cursor: pointer;
+    }
 
     &__headline {
         width: 90%;

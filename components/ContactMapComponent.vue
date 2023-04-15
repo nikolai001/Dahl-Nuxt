@@ -1,6 +1,6 @@
 <template>
 	<article class="contact-map">
-		<ContactformComponent />
+		<ContactformComponent style="display: flex;" />
 		<iframe
 			class="contact-map__map"
 			src="https://snazzymaps.com/embed/475725"

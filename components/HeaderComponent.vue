@@ -58,41 +58,7 @@
       <div :class="{ content__margin:!ContactOpen }" class="content__logo">
         <button v-if="!ContactOpen" class="logo__cta"></button>
       </div>
-
-      <!-- <form
-        action=""
-        method="post"
-        :class="{displayContact:ContactOpen}"
-        class="content__contact-form"
-      >
-        <button
-          type="button"
-          class="contact-form__close material-symbols-rounded"
-          @click="ContactOpen = false"
-        >
-          close
-        </button>
-        <p class="contact-form__paragraph" @click="ContactOpen = false">Kontakt os I dag</p>
-        <input
-          type="text"
-          placeholder="Dit navn..."
-          class="contact-form__input contact-form__input--name"
-        />
-        <input
-          type="text"
-          placeholder="E-mail..."
-          class="contact-form__input contact-form__input--mail"
-        />
-        <textarea
-          name=""
-          id=""
-          rows="5"
-          placeholder="Skriv en besked..."
-          class="contact-form__message"
-        ></textarea>
-        <button type="submit" class="contact-form__submit">SEND</button>
-      </form> -->
-      <ContactformComponent :class="{noDisplay:ContactOpen}" class="content__contact-form" />
+      <ContactformComponent :class="{noDisplay:ContactOpen}" class="content__contact-form" :closeButton="true" @close="ContactOpen = false" />
     </div>
   </header>
 </template>
@@ -111,8 +77,7 @@ export default {
       ContactOpen: false,
       MenuToggled: false,
     };
-  },
-  methods: {},
+  },  
 };
 </script>
 
@@ -231,10 +196,15 @@ export default {
         height: fit-content;
         top: 0;
         bottom: 0;
-        position: absolute;
-        margin: auto 0 0 0;
-        border-radius:0.5em 0.5em 0 0;
+        left: 0;
+        right: 0;
+        position: fixed;
+        margin: auto auto 0 auto;
+        width:95%;
+        border-radius:$secondary-border $secondary-border 0 0;
         display:none;
+        padding: 0 0 20px 0;
+        box-shadow: $el-1--invert;
     }
   }
 }
