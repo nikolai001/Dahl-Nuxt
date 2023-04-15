@@ -209,72 +209,6 @@ export default {
   }
 }
 
-.contact-form {
-  &__input {
-    width: 100%;
-    border:1px solid $border-blue;
-    padding: 10px 10px;
-    @include paragraph($blue,$input);
-    box-sizing: border-box;
-    &:focus {
-      border: 2px solid $border-blue;
-    }
-  }
-
-  &--name {
-    grid-column: 1/2;
-  }
-  &--mail {
-    grid-column: 2/3;
-  }
-  &__message {
-    grid-column: 1/-1;
-    width: 100%;
-    border: 1px solid $border-blue;
-    resize: none;
-    @include paragraph($blue, $input);
-    padding: 10px 10px;
-    box-sizing: border-box;
-    &:focus {
-      border: 2px solid $border-blue;
-    }
-  }
-
-  &__paragraph {
-    @include paragraph($blue,$paragraph);
-    text-align: center;
-    grid-column: 1/-1;
-    cursor:pointer;
-  }
-
-  &__submit {
-    width: 100%;
-    grid-column: 1/-1;
-    background-color: $cta-blue;
-    @include paragraph($white,$input);
-    padding: 12px;
-    outline: none;
-    border: none;
-  }
-
-  &__close {
-    background-color: transparent;
-    outline: none;
-    border: none;
-    grid-column: 2/3;
-    justify-self: end;
-    font-weight: 700;
-    margin-right: 10%;
-    margin: -15% 0;
-    padding: 0;
-    background-color: $cta-blue;
-    @include icon($white,$icon);
-    width: 8vw;
-    height: 8vw;
-    border-radius: 5em;
-  }
-}
-
 .list__company {
   align-self: center;
 }
@@ -435,74 +369,9 @@ export default {
       max-width:150px;
       margin-bottom:117px;
       &-form {
-        grid-template-columns: 1fr 1fr;
-        justify-items: center;
-        padding: 10% 5%;
-        gap: 6% 4%;
-        background-color: $white;
-        grid-row: 4/6;
-        margin-top: 34px;
-        grid-column: 1/-1;
-        z-index: 2;
+        width: 75%;
+        max-width: 600px;
       }
-    }
-  }
-
-  .contact-form {
-    
-    &__input {
-      width: 58%;
-      border-color: $border-blue;
-      @include paragraph($blue, $paragraph--desktop);
-    }
-
-    &__input:focus {
-      border: 2px solid $border-blue;
-    }
-
-    &__input--name {
-      grid-column: 1/2;
-      justify-self:end;
-    }
-    &__input--mail {
-      grid-column: 2/3;
-      justify-self:start;
-    }
-    &__message {
-      grid-column: 1/-1;
-      width: 60%;
-      border-color: $border-blue;
-      @include paragraph($blue, $paragraph--desktop);
-    }
-
-    &__message:focus {
-      border: 2px solid $border-blue;
-    }
-
-    &__paragraph {
-      @include paragraph($blue, $paragraph--desktop);
-      text-align: center;
-      grid-column: 1/-1;
-    }
-
-    &__submit {
-      width: 60%;
-      grid-column: 1/-1;
-      background-color: $cta-blue;
-      @include paragraph($white, $submit);
-      padding: 12px;
-      outline: none;
-      border: none;
-    }
-
-    &__close {
-      @include icon($white, 24px);
-      margin-right: 10%;
-      margin: -15% 0;
-      background-color: $cta-blue;
-      width: 35px;
-      height: 35px;
-      border-radius: 5em;
     }
   }
 
@@ -641,22 +510,16 @@ export default {
 
   .content__contact-form {
       display: none;
-      width:25%;
+      width:35%;
       max-width:449px;
       left:55%;
       position:absolute;
-      top:190px;
+      margin: 95px 0 0 0;
+      top: 0px;
+      bottom: 0;
       padding-top:10px;
-      padding-bottom:10%;
       border-radius:0.5em 0.5em 0 0;
-  }
-
-  .contact-form__input{
-    width:100%
-  }
-  
-  .contact-form__message{
-    width:100%;
+      z-index: 4;
   }
 
   .contact-form__paragraph{

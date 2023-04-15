@@ -196,6 +196,15 @@ export default {
             @include headline($border, $paragraph--desktop)
         }
 
+        &__close {
+            border-radius: $rounded-border;
+            @include icon($white, $icon--desktop);
+            max-width: 35px;
+            right: -15px;
+            top: -15px;
+            box-shadow: $el-1;
+        }
+
         &__terms {
             width: 90%;
             margin: 0 auto;
@@ -231,8 +240,18 @@ export default {
 
 
 @media (min-width: 1000px) {
-    .contact__form {
+    .contact-form {
         margin-bottom: 115px;
+
+         &__close {
+            border-radius: $rounded-border;
+            @include icon($white, $icon--desktop);
+            max-width: 35px;
+            width: 17%;
+            text-align: center;
+            padding: 0;
+        }
+
         &__field {
             padding: 8px 8px;
             min-height: unset;
