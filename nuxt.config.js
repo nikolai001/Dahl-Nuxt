@@ -1,5 +1,10 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+
+  env: {
+    baseUrl: 'http://localhost:1337'
+  },
+
   head: {
     title: 'Dahl-Nuxt',
     htmlAttrs: {
