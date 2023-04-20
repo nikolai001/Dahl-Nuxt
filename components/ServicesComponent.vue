@@ -1,21 +1,20 @@
 <template>
 	<article class="services">
-
 		<h2 class="services__headline">Vores services</h2>
 
         <select class="services__select" v-model="currentService">
             <option v-for="service in services" :key="service.id" :value="service.id">
-                {{service.name}}
+                {{service.Name}}
             </option>
         </select>
 
 		<p v-if="returnedService" class="services__paragraph">
-			{{ returnedService.content }}
+			{{ returnedService.Description }}
 		</p>
 
 		<div class="services__image-container">
 			<img
-				v-if="returnedService"
+				v-if="returnedService && returnedService.img != null"
 				:src="require('@/assets/' + returnedService.img)"
 				:alt="returnedService.imgAlt"
 				class="image-container__image"
@@ -25,39 +24,28 @@
 </template>
 
 <script>
+
+import { fetchServices } from '@/static/API'
+
 export default {
 	name: "ServicesComponent",
 	components: {},
 	props: {},
 	data() {
 		return {
-            currentService: 1,
-			services: [
-				{
-					id: 1,
-					name: "El installationer",
-					content: "Lorem ipsum",
-					img: "DahlCar.png",
-					imgAlt: "Billede af el",
-				},
-				{
-					id: 2,
-					name: "Varmepumper",
-					content: "Lorem ipsum2",
-					img: "tempimg.png",
-					imgAlt: "Billede af varmepumpe",
-				},
-				{
-					id: 5,
-					name: "Energi optimering",
-					content: "Lorem ipsum3",
-					img: "Dahl.jpg",
-					imgAlt: "Billede af optimeringsarbejde",
-				},
-			],
+            currentService: null,
+			services: [],
 		};
 	},
-	methods: {},
+	async created () {
+		let response = await fetchServices()
+		if (response) {
+			response.forEach(element => {
+				this.services.push(element);
+			});
+			this.currentService = response[0].id
+		}
+	},
     computed: {
         returnedService () {
             return this.services.find(x => x.id === this.currentService)
