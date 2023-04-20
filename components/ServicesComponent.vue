@@ -40,9 +40,7 @@ export default {
 	async created () {
 		let response = await fetchServices()
 		if (response) {
-			response.forEach(element => {
-				this.services.push(element);
-			});
+			this.services = response
 			this.currentService = response[0].id
 		}
 	},
