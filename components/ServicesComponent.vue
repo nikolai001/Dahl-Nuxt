@@ -1,22 +1,22 @@
 <template>
 	<article class="services">
 		<h2 class="services__headline">Vores services</h2>
-
+		
         <select class="services__select" v-model="currentService">
             <option v-for="service in services" :key="service.id" :value="service.id">
                 {{service.Name}}
             </option>
         </select>
-
+		
 		<p v-if="returnedService" class="services__paragraph">
 			{{ returnedService.Description }}
 		</p>
 
 		<div class="services__image-container">
 			<img
-				v-if="returnedService && returnedService.img != null"
-				:src="require('@/assets/' + returnedService.img)"
-				:alt="returnedService.imgAlt"
+				v-if="returnedService && returnedService.Image != null"
+				:src="$config.baseUrl + returnedImage.img"
+				:alt="returnedImage.name"
 				class="image-container__image"
 			/>
 		</div>
@@ -47,7 +47,21 @@ export default {
     computed: {
         returnedService () {
             return this.services.find(x => x.id === this.currentService)
-        }
+        },
+
+		returnedImage () {
+			const preferredSizes = ['large', 'medium', 'thumbnail'];
+
+			const reorderedSizes = ['large', 'medium', 'thumbnail'].filter(size => preferredSizes.includes(size));
+
+			const availableSize = reorderedSizes.find(size => this.returnedService.Image[size]);
+
+			if (availableSize) {
+				return {img: this.returnedService.Image[availableSize].url, name:this.returnedService.Image.name};
+			} else {
+				return {img: this.returnedService.Image.url, name:this.returnedService.Image.name};
+			}
+		}
     }
 };
 </script>
