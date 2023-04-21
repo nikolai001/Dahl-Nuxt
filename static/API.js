@@ -11,4 +11,17 @@ async function newRequest(request) {
     .then(response => data = response.json());
     return data;
 } 
-export {newRequest}
+
+async function fetchServices() {
+    let data;
+    await fetch(process.env.baseUrl + '/services', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => data = response.json());
+    return data;
+}
+
+export {newRequest, fetchServices}

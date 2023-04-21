@@ -5,6 +5,10 @@ export default {
     baseUrl: 'http://localhost:1337'
   },
 
+  publicRuntimeConfig: {
+    baseUrl: 'http://localhost:1337'
+  },
+
   head: {
     title: 'Dahl-Nuxt',
     htmlAttrs: {
