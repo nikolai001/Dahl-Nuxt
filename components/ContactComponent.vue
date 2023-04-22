@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import { fetchEmployees } from '@/static/API'
 import EmployeeCardComponent from './EmployeeCardComponent.vue'
 export default {
     components: {
@@ -16,20 +17,14 @@ export default {
     },
     data () {
       return {
-        employees: [
-          {
-            id: 1,
-            name: "Nikolai Raahauge",
-            phone: "29875651",
-            job: "Webmaster"
-          },
-          {
-            id: 2,
-            name: "Svend Viggo Raahauge",
-            phone: "40139420",
-            job: "Afdelingsleder"
-          }
-        ]
+        employees: []
+      }
+    },
+
+    async created () {
+      let response = await fetchEmployees()
+      if (response) {
+        this.employees = response
       }
     }
 }
