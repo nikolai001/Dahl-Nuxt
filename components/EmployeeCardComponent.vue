@@ -1,9 +1,9 @@
 <template>
   <div class="card">
-    <img class="card__image" :src="require(`@/assets/Relay.jpg`)" alt="Relay">
-    <p class="card__field"><i class="field__icon material-symbols-rounded">person</i>{{worker.name}}</p>
-    <p class="card__field"><i class="field__icon material-symbols-rounded">smartphone</i>{{worker.phone}}</p>
-    <p class="card__field"><i class="field__icon material-symbols-rounded">work</i>{{worker.job}}</p>
+    <img v-if="worker.Image" class="card__image" :src="$config.baseUrl + returnedImage.img" :alt="returnedImage.name">
+    <p v-if="worker.Name" class="card__field"><i class="field__icon material-symbols-rounded">person</i>{{worker.Name}}</p>
+    <p v-if="worker.Phone" class="card__field"><i class="field__icon material-symbols-rounded">smartphone</i>{{worker.Phone}}</p>
+    <p v-if="worker.job" class="card__field"><i class="field__icon material-symbols-rounded">work</i>{{worker.job.Name}}</p>
   </div>
 </template>
 
@@ -11,6 +11,21 @@
 export default {
     props: {
         worker: Object
+    },
+    computed: {
+		returnedImage () {
+			const preferredSizes = ['thumbnail', 'medium', 'large'];
+
+			const reorderedSizes = ['thumbnail', 'medium', 'large'].filter(size => preferredSizes.includes(size));
+
+			const availableSize = reorderedSizes.find(size => this.worker.Image[size]);
+
+			if (availableSize) {
+				return {img: this.worker.Image[availableSize].url, name:this.worker.Image.name};
+			} else {
+				return {img: this.worker.Image.url, name:this.worker.Image.name};
+			}
+		}
     }
 }
 </script>

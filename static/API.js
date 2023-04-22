@@ -24,4 +24,16 @@ async function fetchServices() {
     return data;
 }
 
-export {newRequest, fetchServices}
+async function fetchEmployees() {
+    let data;
+    await fetch(process.env.baseUrl + '/employees', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => data = response.json());
+    return data;
+}
+
+export {newRequest, fetchServices, fetchEmployees}
