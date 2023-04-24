@@ -1,10 +1,10 @@
 <template>
 	<div class="gallery__project">
-		<div class="project__thumbnail" :style="{ backgroundImage: 'url(' + require('@/assets/temp_img.jpg') + ')' }">
+		<div class="project__thumbnail" :style="{ backgroundImage: 'url('+ $config.baseUrl + returnedImage.img +')' }">
 			<div class="thumbnail__banner">DAHL</div>
 		</div>
-		<p class="project__title">{{project.name}}</p>
-		<p class="project__description">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores</p>
+		<p class="project__title">{{project.Name}}</p>
+		<p class="project__description">{{project.Description}}</p>
 		<nuxt-link class="project__cta" :to="'projects/'+project.id">Se billeder</nuxt-link>
 	</div>
 </template>
@@ -13,13 +13,27 @@
 export default {
 	name: "GalleryListComponent",
 	props: {
-		project : {
-			id: Number,
-			name: String,
-			img: String
+		project : {}
+	},
+	computed: {
+		returnedImage () {
+
+			const preferredSizes = ['large', 'medium', 'thumbnail'];
+
+			const reorderedSizes = ['large', 'medium', 'thumbnail'].filter(size => preferredSizes.includes(size));
+
+			const thumbnail = this.project.Thumbnail
+
+			const availableSize = reorderedSizes.find(size => thumbnail.formats[size]);
+
+			console.log(thumbnail.formats[availableSize])
+			if (availableSize) {
+				return {img: thumbnail.formats[availableSize].url};
+			} else {
+				return {img: thumbnail.url};
+			}
 		}
 	},
-	computed: {},
 	methods: {},
 };
 </script>

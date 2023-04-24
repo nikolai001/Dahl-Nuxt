@@ -1,17 +1,32 @@
 <template>
     <article class="project-page">
+
         <h1 class="project-page__headline">This is project {{this.$route.params.index}}</h1>
-        <SliderComponent />
+        <SliderComponent :images="images"/>
     </article>
 </template>
 
 <script>
 import SliderComponent from '@/components/SliderComponent.vue'
+import { fetchImages } from '@/static/API'
 
 export default {
 
     components: {
         SliderComponent
+    },
+
+    data () {
+        return {
+            images : []
+        }
+    },
+
+    async created () {
+        let response = await fetchImages(this.$route.params.index)
+        if (response.Images) {
+            this.images = response.Images
+        }
     }
 
 }
