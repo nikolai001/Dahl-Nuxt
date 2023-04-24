@@ -33,7 +33,6 @@ export default {
   async created() {
     let response = await fetchProjects()
     if (response) {
-      console.log(response)
       this.projects = response;
     }
   }

@@ -26,7 +26,6 @@ export default {
 
 			const availableSize = reorderedSizes.find(size => thumbnail.formats[size]);
 
-			console.log(thumbnail.formats[availableSize])
 			if (availableSize) {
 				return {img: thumbnail.formats[availableSize].url};
 			} else {

@@ -1,7 +1,7 @@
 <template>
     <article class="project-page">
 
-        <h1 class="project-page__headline">This is project {{this.$route.params.index}}</h1>
+        <h1 class="project-page__headline">{{projectName}}</h1>
         <SliderComponent :images="images"/>
     </article>
 </template>
@@ -18,13 +18,15 @@ export default {
 
     data () {
         return {
-            images : []
+            images : [],
+            projectName: ''
         }
     },
 
     async created () {
         let response = await fetchImages(this.$route.params.index)
         if (response.Images) {
+            this.projectName = response.Name
             this.images = response.Images
         }
     }
