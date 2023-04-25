@@ -1,7 +1,12 @@
 <template>
   <article class="offer">
     <h2 class="offer__headline">Tilbud og kampagner</h2>
-    <OfferComponent v-for="offer in filteredOffers" :key="offer.id" :offer="offer" />
+    <span v-if="filteredOffers.length > 0">
+        <OfferComponent v-for="offer in filteredOffers" :key="offer.id" :offer="offer" />
+    </span>
+    <p class="offer__message" v-else>
+        Der er ingen tilbud eller kampagner i øjeblikket
+    </p>
   </article>
 </template>
 
@@ -45,6 +50,9 @@ export default {
             @include headline;
             margin:0;
         }
+        &__message {
+            @include paragraph;
+        }
     }
     @media (min-width: 600px) { 
         .offer {
@@ -52,8 +60,12 @@ export default {
             margin: 0;
             padding: 0 5% 0 0;
             text-align: center;
+            max-width: 320px;
             &__headline {
                 @include headline($blue,$headline--desktop);
+            }
+            &__message {
+                @include paragraph(null, $paragraph--desktop);
             }
         }
     }
