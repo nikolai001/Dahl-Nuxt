@@ -36,4 +36,28 @@ async function fetchEmployees() {
     return data;
 }
 
-export {newRequest, fetchServices, fetchEmployees}
+async function fetchProjects() {
+    let data;
+    await fetch(process.env.baseUrl + '/projects', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => data = response.json());
+    return data;
+}
+
+async function fetchImages(id) {
+    let data;
+    await fetch(process.env.baseUrl + '/projects/'+id, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => data = response.json());
+    return data;
+}
+
+export {newRequest, fetchServices, fetchEmployees, fetchProjects, fetchImages}

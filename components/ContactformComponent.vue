@@ -93,7 +93,6 @@ export default {
 		if (this.request.name.length > 1 && this.request.mail.length > 1 && this.request.phone.length > 1 && this.request.message.length > 1 && this.request.terms) {
             let response = await newRequest(this.request)
 			if (response) {
-				console.log(response)
 				this.clear()
             }
 		}

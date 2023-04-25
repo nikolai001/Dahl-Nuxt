@@ -12,6 +12,7 @@
 import SmallHeaderComponent from '../components/SmallHeaderComponent.vue'
 import GalleryListComponent from '../components/GalleryListComponent.vue'
 import FooterComponent from '../components/FooterComponent.vue'
+import { fetchProjects } from '@/static/API'
 // @ is an alias to /src
 
 export default {
@@ -19,23 +20,7 @@ export default {
 
   data() {
     return {
-      projects: [
-        {
-          id: 1,
-          name: 'Opsætning af solceller',
-          img: 'temp_img.jpg'
-        },
-        {
-          id: 2,
-          name: 'Opsætning af varmepumper',
-          img: 'temp_img.jpg'
-        },
-        {
-          id: 3,
-          name: 'Udskiftning af oliefyr',
-          img: 'temp_img.jpg'
-        }
-      ]
+      projects: [],
     }
   },
 
@@ -43,6 +28,13 @@ export default {
     SmallHeaderComponent,
     GalleryListComponent,
     FooterComponent
+  },
+
+  async created() {
+    let response = await fetchProjects()
+    if (response) {
+      this.projects = response;
+    }
   }
 }
 </script>

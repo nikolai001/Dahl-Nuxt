@@ -1,10 +1,10 @@
 <template>
 	<div class="slider">
-		<div
+		<div v-if="images[currentImage]"
 			class="slider__image"
 			:style="{
 				backgroundImage:
-					'url(' + require('@/assets/temp_img.jpg') + ')',
+					'url(' + $config.baseUrl+images[currentImage].url + ')',
 			}"
 		>
 			<div class="slider__progress">
@@ -15,15 +15,12 @@
 					chevron_right
 				</button>
 			</div>
-			<p class="image__indicator">{{ currentImage }}/{{ maxImage }}</p>
+			<p class="image__indicator">{{ currentImage +1 }}/{{ images.length }}</p>
 		</div>
-		<p class="slider__text">
-			{{
-				images[currentImage - 1].description +
-				" " +
-				images[currentImage - 1].id
-			}}
-		</p>
+		<div class="slider__text">
+			<span v-if="images[currentImage] && images[currentImage].caption">{{images[currentImage].caption}}</span>
+			<span v-else-if="images[currentImage] && !images[currentImage.caption]">{{images[currentImage].name}}</span>
+		</div>
 	</div>
 </template>
 
@@ -31,53 +28,28 @@
 export default {
 	name: "GalleryListComponent",
 	props: {
-		project: {
-			images: Array,
-		},
+		images: Array
 	},
 	data() {
 		return {
-			currentImage: 1,
-			maxImage: 5,
-			images: [
-				{
-					id: 1,
-					description: "Picture test",
-				},
-				{
-					id: 2,
-					description: "Picture test",
-				},
-				{
-					id: 3,
-					description: "Picture test",
-				},
-				{
-					id: 4,
-					description: "Picture test",
-				},
-				{
-					id: 5,
-					description: "Picture test",
-				},
-			],
+			currentImage: 0,
 		};
 	},
 	methods: {
 		slideProgress(Direction) {
 			if (Direction !== "next") {
-				if (this.currentImage !== 1) {
+				if (this.currentImage !== 0) {
 					this.currentImage--;
 					return;
 				}
-				this.currentImage = 5;
+				this.currentImage = this.images.length-1;
 				return;
 			}
-			if (this.currentImage !== this.maxImage) {
+			if (this.currentImage !== this.images.length-1) {
 				this.currentImage++;
 				return;
 			}
-			this.currentImage = 1;
+			this.currentImage = 0;
 			return;
 		},
 	},
