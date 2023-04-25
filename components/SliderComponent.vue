@@ -19,6 +19,7 @@
 		</div>
 		<div class="slider__text">
 			<span v-if="images[currentImage] && images[currentImage].caption">{{images[currentImage].caption}}</span>
+			<span v-else-if="images[currentImage] && !images[currentImage.caption]">{{images[currentImage].name}}</span>
 		</div>
 	</div>
 </template>
