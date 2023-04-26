@@ -60,6 +60,19 @@ async function fetchImages(id) {
     return data;
 }
 
+async function fetchOffers() {
+    let data;
+    await fetch(process.env.baseUrl + '/offers/', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => data = response.json());
+    return data;
+}
+
+
 async function fetchAbout() {
     let data;
     await fetch(process.env.baseUrl + '/about-us/', {
@@ -72,4 +85,4 @@ async function fetchAbout() {
     return data;
 }
 
-export {newRequest, fetchServices, fetchEmployees, fetchProjects, fetchImages, fetchAbout}
+export {newRequest, fetchServices, fetchEmployees, fetchProjects, fetchImages, fetchOffers, fetchAbout}
