@@ -29,15 +29,17 @@
         <img src="../assets/Dahl.jpg" class="image-container__image" />
       </div>
     </div>
-
+    <OffersComponent />
   </main>
 </template>
 
 <script>
+import OffersComponent from './OfferListComponent.vue';
 
 export default {
   name: "InfoComponent",
   components: {
+    OffersComponent
 
   },
   props: {},
@@ -51,11 +53,12 @@ export default {
 
 .info {
   display: grid;
+  padding: 77px 0 0 0;
   &__headline {
     @include headline;
     text-align: left;
     padding: 0 5%;
-    margin: 77px 0 32px 0;
+    margin: 0 0 32px 0;
   }
   &__paragraph {
     @include paragraph;
@@ -107,7 +110,7 @@ export default {
     background-size: cover;
     display:flex;
     &__about{
-      width:60%;
+      width:100%;
     }
     &__headline {
       @include headline(null, $headline--desktop);
