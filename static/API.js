@@ -72,4 +72,17 @@ async function fetchOffers() {
     return data;
 }
 
-export {newRequest, fetchServices, fetchEmployees, fetchProjects, fetchImages, fetchOffers}
+
+async function fetchAbout() {
+    let data;
+    await fetch(process.env.baseUrl + '/about-us/', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => data = response.json());
+    return data;
+}
+
+export {newRequest, fetchServices, fetchEmployees, fetchProjects, fetchImages, fetchOffers, fetchAbout}
