@@ -53,4 +53,27 @@ export default {
             transform: translateX(0px);
         }
     }
+    @media (min-width: 600px) {
+        .snackbar {
+            width: 30%;
+            @include paragraph($white,$paragraph--desktop);
+            max-width: 185px;
+            padding: 10px 5px;
+            bottom: 0;
+            margin: 10px 0 auto 20px;
+            &--toggled {
+                transform: translateX(0px);
+            }
+        }
+    }
+
+    @media (min-width: 1000px) {
+        .snackbar {
+        bottom: 180px;
+        &--toggled {
+            transform: translateX(0px);
+        }
+    }
+}
+        
 </style>
