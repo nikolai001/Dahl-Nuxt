@@ -93,7 +93,10 @@ export default {
 		if (this.request.name.length > 1 && this.request.mail.length > 1 && this.request.phone.length > 1 && this.request.message.length > 1 && this.request.terms) {
             let response = await newRequest(this.request)
 			if (response) {
+                this.sentMessage = true
 				this.clear()
+                this.$emit('close');
+                $nuxt.$emit('sent')
             }
 		}
 	}

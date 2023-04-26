@@ -3,6 +3,7 @@
     <header-component></header-component>
     <info-component></info-component>
     <RecentProjectsComponent></RecentProjectsComponent>
+    <SnackbarComponent :message="'Forespørgesel afsendt'" :duration="2000" />
     <footer-component></footer-component>
   </main>
 </template>
@@ -13,6 +14,7 @@
 import HeaderComponent from '@/components/HeaderComponent.vue'
 import InfoComponent from '@/components/InfoComponent.vue'
 import FooterComponent from '@/components/FooterComponent.vue'
+import SnackbarComponent from '@/components/SnackbarComponent.vue'
 import RecentProjectsComponent from '@/components/RecentProjectsComponent.vue'
 
 
@@ -22,6 +24,7 @@ export default {
     HeaderComponent,
     InfoComponent,
     RecentProjectsComponent,
+    SnackbarComponent,
     FooterComponent
   }
 }
