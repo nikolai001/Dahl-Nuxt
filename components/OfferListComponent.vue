@@ -69,4 +69,11 @@ export default {
             }
         }
     }
+
+    @media (min-width: 1000px) { 
+        .offer {
+            justify-self: center;
+            padding: 0;
+        }
+    }
 </style>
