@@ -1,22 +1,8 @@
 <template>
   <article class="about">
-      <h2 class="about__headline">Om Dahl Lolland</h2>
-      <p class="about__paragraph">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-        voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-        clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-        amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
-        diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-        Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
-        sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-        diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-        erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-        rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-        dolor sit amet. Lorem ipsum dolor sit
-      </p>
-
+      <h1 class="about__headline">Om Dahl Lolland</h1>
+      <span v-if="content" class="about__paragraph" v-html="markdownParser">
+      </span>
       <div class="about__image-container">
         <img src="../assets/DahlCar.png" class="image-container__image" />
       </div>
@@ -25,20 +11,42 @@
 </template>
 
 <script>
+import { fetchAbout } from '@/static/API';
 
 export default {
   name: "AboutComponent",
   components: {
 
   },
-  props: {},
   data() {
     return {
-
+      content: ''
     };
   },
-  methods: {},
-};
+  async created () {
+    let response = await fetchAbout()
+    if (response) {
+      this.content = response
+    }
+  },
+
+  computed: {
+    markdownParser () {
+    const toHTML = this.content.description
+      .replace(/^###### (.*)(?=\n|$)/gim, '<h6>$1</6>') // h3 tag
+      .replace(/^##### (.*)(?=\n|$)/gim, '<h5>$1</h5>') // h3 tag
+      .replace(/^#### (.*)(?=\n|$)/gim, '<h4>$1</h4>') // h3 tag
+      .replace(/^### (.*)(?=\n|$)/gim, '<h3>$1</h3>') // h3 tag
+      .replace(/^## (.*)(?=\n|$)/gim, '<h2>$1</h2>') // h2 tag
+      .replace(/^# (.*)(?=\n|$)/gim, '<h1>$1</h1>') // h1 tag
+      .replace(/\*\*(.*)\*\*/gim, '<b>$1</b>') // bold text
+      .replace(/\*(.*)\*/gim, '<i>$1</i>') // italic text
+      .replace(/~~(.*?)~~/g, '<s>$1</s>') // strike through text 
+      .replace(/^(?!<h[1-6]>|<b>|<i>|<s>|<br>)(.+)$/gim, '<p>$1</p>') // wrap remaining text in <p> tag
+      return toHTML.trim(); // using trim method to remove whitespace
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -57,6 +65,28 @@ export default {
     text-align: left;
     padding: 0 5%;
     margin-bottom: 32px;
+
+   ::v-deep h1 {
+      @include headline;
+    }
+   ::v-deep h2 {
+      @include headline($blue, $headline-2);
+    }
+    ::v-deep h3 {
+      @include headline($blue, $headline-3);
+    }
+    ::v-deep h4 {
+      @include headline($blue, $headline-4);
+    }
+    ::v-deep h5 {
+      @include headline($blue, $headline-5);
+    }
+    ::v-deep h6 {
+      @include headline($blue, $headline-6);
+    }
+    ::v-deep {
+      @include paragraph;
+    }
   }
 
   &__image-container {
@@ -87,7 +117,30 @@ export default {
       padding: 0 10%;
       grid-column: 1/2;
       width:100%;
-    }
+    
+      ::v-deep h1 {
+          @include headline($blue, $headline--desktop);
+        }
+      ::v-deep h2 {
+          @include headline($blue, $headline-2--desktop);
+        }
+        ::v-deep h3 {
+          @include headline($blue, $headline-3--desktop);
+        }
+        ::v-deep h4 {
+          @include headline($blue, $headline-4--desktop);
+        }
+        ::v-deep h5 {
+          @include headline($blue, $headline-5--desktop);
+        }
+        ::v-deep h6 {
+          @include headline($blue, $headline-6--desktop);
+        }
+
+        ::v-deep {
+          @include paragraph(null, $paragraph--desktop);
+        }
+        }
 
     &__image-container {
       flex-direction: row;
