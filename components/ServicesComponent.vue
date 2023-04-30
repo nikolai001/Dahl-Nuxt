@@ -39,6 +39,9 @@ export default {
 	},
 	async created () {
 		let response = await fetchServices()
+		.catch(err => {
+			return
+		})
 		if (response) {
 			this.services = response
 			this.currentService = response[0].id
