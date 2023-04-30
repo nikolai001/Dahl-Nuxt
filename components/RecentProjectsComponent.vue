@@ -1,54 +1,53 @@
 <template>
 	<div class="recent-projects">
-		<img
-			class="recent-projects__img"
-			alt="Image placeholder"
-			src="../assets/smallimg.png"
-		/>
-		<img
-			class="recent-projects__img"
-			alt="Image placeholder"
-			src="../assets/smallimg.png"
-		/>
-		<img
-			class="recent-projects__img"
-			alt="Image placeholder"
-			src="../assets/tempimg.png"
-		/>
-		<img
-			class="recent-projects__img"
-			alt="Image placeholder"
-			src="../assets/tempimg.png"
-		/>
-		<img
-			class="recent-projects__img"
-			alt="Image placeholder"
-			src="../assets/tempimg.png"
-		/>
-		<img
-			class="recent-projects__img"
-			alt="Image placeholder"
-			src="../assets/tempimg.png"
-		/>
-		<img
-			class="recent-projects__img"
-			alt="Image placeholder"
-			src="../assets/tempimg.png"
-		/>
-		<img
-			class="recent-projects__img"
-			alt="Image placeholder"
-			src="../assets/tempimg.png"
-		/>
+		<nuxt-link :to="'projects/'+image.id" v-for="image in imagesWithBestFormats" :key="image.id" class="recent-projects__img" :style="{ backgroundImage: 'url('+ $config.baseUrl+image.bestFormatUrl +')'}">
+		</nuxt-link>	
 	</div>
 </template>
 
 <script>
+import { fetchProjects } from '@/static/API';
 export default {
 	name: "RecentProjectComponent",
-	props: {},
-	computed: {},
-	methods: {},
+	data () {
+		return {
+			images: []
+		}
+	},
+	async created () {
+		let response = await fetchProjects()
+		if (response) {
+			this.images = response
+		}
+	},
+	computed: {
+
+		sortImages () {
+			this.images.sort((a,b) => {
+				return a.id < b.id
+			})
+			this.images = this.images.slice(0, 12);
+		},
+
+		imagesWithBestFormats() {
+			
+			this.sortImages
+
+			const preferredSizes = ['small', 'medium', 'large'];
+			const reorderedSizes = ['small', 'medium', 'large'].filter(size => preferredSizes.includes(size));
+
+			const imagesWithFormats = this.images.map(image => {
+				const thumbnail = image.Thumbnail;
+				const availableSize = reorderedSizes.find(size => thumbnail.formats[size]);
+				return {
+				id: image.id,
+				bestFormatUrl: availableSize ? thumbnail.formats[availableSize].url : thumbnail.url,
+				alt: image.Name
+				};
+			});
+			return imagesWithFormats;
+		}
+	}
 };
 </script>
 
@@ -64,11 +63,13 @@ export default {
 	background-color: #f6f6f6;
 	padding-bottom: 124px;
 	&__img {
-		width: 40vw;
-		height: 40vw;
+		width: 40%;
+		aspect-ratio: 1/1;
 		margin: 2.5% 2.5%;
 		display: block;
-		object-fit: cover;
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
 	}
 }
 
@@ -78,8 +79,7 @@ export default {
 		flex-wrap: wrap;
 		justify-content: none;
 		&__img {
-			width: 19vw;
-			height: 19vw;
+			width: 20%;
 			margin: 2% 2.2%;
 		}
 	}
@@ -91,9 +91,9 @@ export default {
 		flex-wrap: wrap;
 		padding: 0 2% 124px 2%;
 		&__img {
-			width: 16vw;
-			height: 16vw;
+			width: 17%;
 			margin: 2% 4%;
+			max-width: 200px;
 		}
 	}
 }
