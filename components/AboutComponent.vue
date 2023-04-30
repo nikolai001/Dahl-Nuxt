@@ -25,6 +25,9 @@ export default {
   },
   async created () {
     let response = await fetchAbout()
+    .catch(err => {
+			return
+		})
     if (response) {
       this.content = response
     }

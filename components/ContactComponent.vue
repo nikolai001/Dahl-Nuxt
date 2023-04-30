@@ -23,6 +23,9 @@ export default {
 
     async created () {
       let response = await fetchEmployees()
+      .catch(err => {
+			  return
+		  })
       if (response) {
         this.employees = response
       }

@@ -16,6 +16,9 @@ export default {
 	},
 	async created () {
 		let response = await fetchProjects()
+		.catch(err => {
+			return
+		})
 		if (response) {
 			this.images = response
 		}

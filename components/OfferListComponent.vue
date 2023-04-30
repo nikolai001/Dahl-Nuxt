@@ -24,6 +24,9 @@ export default {
 
     async created () {
         let response = await fetchOffers()
+        .catch(err => {
+            return
+        })
         if (response) {
             this.offers = response
         }
@@ -31,10 +34,12 @@ export default {
 
     computed: {
         filteredOffers () {
+            if (this.offers) {
             return this.offers.filter(offer => {
                 offer.Price = offer.Price.toString().replace(/\./g, ",")
                 return (new Date().valueOf() >= new Date(offer.Start).valueOf() && new Date().valueOf() <= new Date(offer.End).valueOf())
             });
+            }
         },
     }
 }
