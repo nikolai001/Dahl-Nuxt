@@ -15,12 +15,24 @@ export default {
 		}
 	},
 	async created () {
-		let response = await fetchProjects()
-		.catch(err => {
-			return
-		})
-		if (response) {
-			this.images = response
+		if (!localStorage.getItem('recentProjects') || ((new Date() - new Date(JSON.parse(localStorage.getItem('recentProjects')).lastUpdated)) / (1000 * 60 * 60)) >= 24) {
+			console.log('fetching from DB')
+			let response = await fetchProjects()
+			.catch(err => {
+				return
+			})
+			if (response) {
+				this.images = response
+				
+				const recentProjects = {
+					images: this.images,
+					lastUpdated: new Date().toString()
+				}
+				localStorage.setItem('recentProjects', JSON.stringify(recentProjects));
+			}
+		}
+		else {
+			this.images = JSON.parse(localStorage.getItem('recentProjects')).images
 		}
 	},
 	computed: {
