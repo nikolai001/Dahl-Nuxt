@@ -22,15 +22,26 @@ export default {
     },
 
     async created () {
-      let response = await fetchEmployees()
-      .catch(err => {
-			  return
-		  })
-      if (response) {
-        this.employees = response
+      if (!localStorage.getItem('employees') || ((new Date() - new Date(JSON.parse(localStorage.getItem('employees')).lastUpdated)) / (1000 * 60 * 60)) >= 24) {
+        let response = await fetchEmployees()
+        .catch(err => {
+          return
+        })
+        if (response) {
+          this.employees = response
+          
+          const employees = {
+            workers: this.employees,
+            lastUpdated: new Date().toString()
+          }
+          localStorage.setItem('employees', JSON.stringify(employees));
+        }
+      }
+      else {
+        this.employees = JSON.parse(localStorage.getItem('employees')).workers
       }
     }
-}
+  }
 </script>
 
 <style lang="scss" scoped>

@@ -31,13 +31,24 @@ export default {
   },
 
   async created() {
-    let response = await fetchProjects()
-    .catch(err => {
-			return
-		})
-    if (response) {
-      this.projects = response;
-    }
+		if (!localStorage.getItem('projects') || ((new Date() - new Date(JSON.parse(localStorage.getItem('projects')).lastUpdated)) / (1000 * 60 * 60)) >= 24) {
+			let response = await fetchProjects()
+			.catch(err => {
+				return
+			})
+			if (response) {
+				this.projects = response
+				
+				const projects = {
+					images: this.images,
+					lastUpdated: new Date().toString()
+				}
+				localStorage.setItem('projects', JSON.stringify(projects));
+			}
+		}
+		else {
+			this.projects = JSON.parse(localStorage.getItem('projects')).images
+		}
   }
 }
 </script>
