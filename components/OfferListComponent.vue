@@ -23,12 +23,21 @@ export default {
     },
 
     async created () {
-        let response = await fetchOffers()
-        .catch(err => {
-            return
-        })
-        if (response) {
-            this.offers = response
+        if (!localStorage.getItem('offers') || ((new Date() - new Date(JSON.parse(localStorage.getItem('offers')).lastUpdated)) / (1000 * 60 * 60)) >= 24) {
+            let response = await fetchOffers()
+            .catch(err => {
+                return
+            })
+            if (response) {
+                this.offers = response				
+                const offers = {
+					offers: this.offers,
+					lastUpdated: new Date().toString()
+				}
+				localStorage.setItem('offers', JSON.stringify(offers));
+			}
+        }else {
+            this.offers = JSON.parse(localStorage.getItem('offers')).offers
         }
     },
 
