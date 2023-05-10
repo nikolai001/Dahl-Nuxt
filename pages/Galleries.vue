@@ -38,9 +38,8 @@ export default {
 			})
 			if (response) {
 				this.projects = response
-				
 				const projects = {
-					images: this.images,
+					images: this.projects,
 					lastUpdated: new Date().toString()
 				}
 				localStorage.setItem('projects', JSON.stringify(projects));
