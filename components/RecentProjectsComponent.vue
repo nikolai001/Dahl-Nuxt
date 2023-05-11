@@ -15,40 +15,55 @@ export default {
 		}
 	},
 	async created () {
-		let response = await fetchProjects()
-		.catch(err => {
-			return
-		})
-		if (response) {
-			this.images = response
+		if (!localStorage.getItem('projects') || ((new Date() - new Date(JSON.parse(localStorage.getItem('projects')).lastUpdated)) / (1000 * 60 * 60)) >= 24) {
+			console.log('fetching from DB')
+			let response = await fetchProjects()
+			.catch(err => {
+				return
+			})
+			if (response) {
+				this.images = response
+				
+				const projects = {
+					images: this.images,
+					lastUpdated: new Date().toString()
+				}
+				localStorage.setItem('projects', JSON.stringify(projects));
+			}
+		}
+		else {
+			this.images = JSON.parse(localStorage.getItem('projects')).images
 		}
 	},
 	computed: {
 
 		sortImages () {
-			this.images.sort((a,b) => {
-				return a.id < b.id
-			})
-			this.images = this.images.slice(0, 12);
+			if (this.images && this.images.length > 0) {
+				this.images.sort((a,b) => {
+					return a.id < b.id
+				})
+				this.images = this.images.slice(0, 12);
+			}
 		},
 
 		imagesWithBestFormats() {
-			
-			this.sortImages
+			if (this.images && this.images.length > 0) {
+				this.sortImages
 
-			const preferredSizes = ['small', 'medium', 'large'];
-			const reorderedSizes = ['small', 'medium', 'large'].filter(size => preferredSizes.includes(size));
+				const preferredSizes = ['small', 'medium', 'large'];
+				const reorderedSizes = ['small', 'medium', 'large'].filter(size => preferredSizes.includes(size));
 
-			const imagesWithFormats = this.images.map(image => {
-				const thumbnail = image.Thumbnail;
-				const availableSize = reorderedSizes.find(size => thumbnail.formats[size]);
-				return {
-				id: image.id,
-				bestFormatUrl: availableSize ? thumbnail.formats[availableSize].url : thumbnail.url,
-				alt: image.Name
-				};
-			});
-			return imagesWithFormats;
+				const imagesWithFormats = this.images.map(image => {
+					const thumbnail = image.Thumbnail;
+					const availableSize = reorderedSizes.find(size => thumbnail.formats[size]);
+					return {
+					id: image.id,
+					bestFormatUrl: availableSize ? thumbnail.formats[availableSize].url : thumbnail.url,
+					alt: image.Name
+					};
+				});
+				return imagesWithFormats;
+			}
 		}
 	}
 };

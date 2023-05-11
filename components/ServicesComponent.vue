@@ -38,13 +38,24 @@ export default {
 		};
 	},
 	async created () {
-		let response = await fetchServices()
-		.catch(err => {
-			return
-		})
-		if (response) {
-			this.services = response
-			this.currentService = response[0].id
+		if (!localStorage.getItem('services') || ((new Date() - new Date(JSON.parse(localStorage.getItem('services')).lastUpdated)) / (1000 * 60 * 60)) >= 24) {
+			let response = await fetchServices()
+			.catch(err => {
+				return
+			})
+			if (response) {
+				this.services = response
+				this.currentService = response[0].id
+				const services = {
+					services: this.services,
+					lastUpdated: new Date().toString()
+				}
+				localStorage.setItem('services', JSON.stringify(services));
+			}
+		}
+		else {
+			this.services = JSON.parse(localStorage.getItem('services')).services
+			this.currentService = this.services[0].id
 		}
 	},
     computed: {

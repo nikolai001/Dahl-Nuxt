@@ -24,13 +24,20 @@ export default {
     },
 
     async created () {
-        let response = await fetchImages(this.$route.params.index)
-        if (response.Images) {
-            this.projectName = response.Name
-            this.images = response.Images
-        }
+        if (!localStorage.getItem('projects') || !JSON.parse(localStorage.getItem('projects')).images.find(x => x.id == this.$route.params.index)) {
+			let response = await fetchImages(this.$route.params.index)
+			.catch(err => {
+				return
+			})
+			if (response) {
+				this.images = response.Images
+                this.projectName = response.Name
+			}
+		}
+		else {
+			this.images = JSON.parse(localStorage.getItem('projects')).images.find(x => x.id == this.$route.params.index).Images
+		}
     }
-
 }
 </script>
 

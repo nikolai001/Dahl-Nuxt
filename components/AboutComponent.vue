@@ -24,13 +24,22 @@ export default {
     };
   },
   async created () {
-    let response = await fetchAbout()
-    .catch(err => {
-			return
-		})
-    if (response) {
-      this.content = response
-    }
+    if (!localStorage.getItem('about') || ((new Date() - new Date(JSON.parse(localStorage.getItem('about')).lastUpdated)) / (1000 * 60 * 60)) >= 24) {
+          let response = await fetchAbout()
+          .catch(err => {
+              return
+          })
+          if (response) {
+              this.content = response				
+              const about = {
+                content: this.content,
+                lastUpdated: new Date().toString()
+              }
+            localStorage.setItem('about', JSON.stringify(about));
+          }
+      }else {
+        this.content = JSON.parse(localStorage.getItem('about')).content
+      }
   },
 
   computed: {
