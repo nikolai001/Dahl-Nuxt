@@ -3,24 +3,18 @@
     <div class="info__about">
       <h2 class="info__headline">EL-service på hele Lolland og Falster</h2>
       <p class="info__paragraph">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-        voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-        clita kasd gubergren. <br><br> No sea takimata sanctus est Lorem ipsum dolor sit
-        amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
-        diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-        Stet clita kasd gubergren.<br><br> No sea takimata sanctus est Lorem ipsum dolor
-        sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-        diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-        erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-        rebum.Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-        dolor sit amet. Lorem ipsum dolor sit
+        Dahl Lolland Aps - Din pålidelige elektriker i Nakskov
+        Vi er stolte af at være Nakskovs førende el-virksomhed, 
+        der leverer enestående elektrikertjenester til både private og virksomheder. <br>
+        Vores dedikerede team af erfarne elektrikere er klar til at løse enhver elektrisk opgave, 
+        uanset størrelse eller kompleksitet.<br> Med vores lokalkendskab og ekspertise sikrer vi, at 
+        dine elektriske behov bliver imødekommet på bedste vis.<br>
+        Ring til os i dag for professionel og pålidelig service - vi er her for dig i Nakskov og lokalområdet!
       </p>
 
       <div class="info__buttons">
-        <nuxt-link class="buttons__link" to="#About">OM OS</nuxt-link>
-        <nuxt-link class="buttons__link" to="#Services">SERVICES</nuxt-link>
+        <nuxt-link class="buttons__link" to="/About">OM OS</nuxt-link>
+        <nuxt-link class="buttons__link" to="/Services">SERVICES</nuxt-link>
       </div>
 
       <div class="info__image-container">

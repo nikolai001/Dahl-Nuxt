@@ -47,8 +47,7 @@
       <img src="@/assets/Wave.svg" class="image__wave" draggable="false">
       <h1 class="content__headline">Autoriseret el-installatør</h1>
       <p class="content__paragraph">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-        eirmod tempor invidunt ut labore.
+        <b>Dahl Lolland Aps</b> Nakskovs bedste el virksomhed med byens bedste elektrikere, ingen opgave er for lille eller for stor. <br> <b>Ring til Dahl vi er lokal</b>
       </p>
 
       <button class="content__contact" @click="ContactOpen = true">
